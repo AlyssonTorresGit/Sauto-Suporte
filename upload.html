@@ -6,28 +6,37 @@
     <title>Upload</title>
     <link rel="stylesheet" href="upload.css">
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous">
+
+    </script>
 </head>
 <body>
     <h2 class="uploadhtml">Fazer Upload</h2>
     <form action="upload.php" class="upload" method="POST" enctype="multipart/form-data">
-        <label class="tilulo" for="ititulo">Título</label>
-            <input id="ititulo" type="text" name="titulo" placeholder="Título" required><br>
-        <label for="idesc">Descrição</label>
-            <textarea rows="15" id="idesc" name="descricao" placeholder="Descrição"></textarea><br>
-        <label for="iresol">Resolução</label>
-            <textarea rows="15" id="iresol" name="resolucao" placeholder="Resolução"></textarea><br>
-        <input type="file" name="imagem" accept="image/*" id="imagemInput" required><br>
-            <div id="previewContainer" style="display: none; margin-top: 10px;">
-                <p>Prévia da Imagem:</p>
-                <img class="imagem" id="preview" src="" alt="Prévia da imagem" style="max-width: 300px; border: 1px solid #000; ">
-            </div>
-            <button class="container destaque-btn btn-enviar" type="submit">
+        <div  class="folha">
+            <label class="tilulo" for="ititulo">Título</label>
+               <input id="ititulo" type="text" name="titulo" placeholder="Título" required><br>
+            <label for="idesc">Descrição</label>
+                <textarea rows="15" id="idesc" name="descricao" placeholder="Descrição"></textarea><br>
+            <label for="iresol">Resolução</label>
+                <textarea rows="15" id="iresol" name="resolucao" placeholder="Resolução"></textarea><br>
+            <input type="file" name="imagem" accept="image/*" id="imagemInput" required><br>
+        </div>
+
+         <div id="previewContainer" style="display: none; margin-top: 10px;">
+            <p>Prévia da Imagem:</p>
+            <img class="imagem" id="preview" src="" alt="Prévia da imagem" style="max-width: 300px; border: 1px solid #000; ">
+        </div>
+
+        <div class="botoes-upload">
+            <button class="btn-salvar" type="submit">
             <img src="imagens-icones/salvar.JPG" alt="salvar">
             </button>
-        <!-- <button class="destaque-btn btn-limpar-upload" type="reset" onclick="limparPreview()">Limpar</button> -->
-            <a href="lista.php" class="container destaque-btn btn-pesquisar">
+            <a href="lista.php" class="btn-consultar">
                 <img src="imagens-icones/consultar.JPG" alt="consultar">
             </a>
+        </div>
 
     </form>
     <script>

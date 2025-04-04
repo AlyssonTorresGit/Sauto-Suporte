@@ -10,11 +10,12 @@ body{
 }
 
 h2.uploadhtml{
+    font-weight: bold;
     color: #0053B3;
     margin: 20px;
     text-align: center;
     margin: 20px;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.258);  
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.500);  
 }
 form.upload{
     background-color:rgba(87, 86, 86, 0.829);
@@ -26,3 +27,50 @@ form.upload{
     border-radius: 10px;
     margin: auto;
 }
+
+form.upload > div.botoes-upload{
+    margin: 10px 0px;
+    /* display: block; */
+    display: flex;
+    gap: 10px; /* Define o espaçamento entre os elementos */
+    align-items: center; /* Alinha os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente (opcional) */
+}
+
+form.upload > div.botoes-upload > button.btn-salvar {
+    border: none;
+    
+
+}
+
+@media (max-width: 768px) {
+    form.upload {
+     padding: 10px;
+    }
+    .lista {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .campo-pesquisa {
+        width: 100%;
+    }
+
+    .destaque-btn img {
+        width: 50px;
+        height: 45px;
+    }
+    .imagem{
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    form.upload {
+        padding: 20px;
+
+    }
+}
+
+
