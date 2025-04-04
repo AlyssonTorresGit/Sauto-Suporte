@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload de Imagem</title>
+    <title>Upload</title>
+    <link rel="stylesheet" href="upload.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h2 class="uploadhtml">Fazer Upload</h2>
     <form action="upload.php" class="upload" method="POST" enctype="multipart/form-data">
-        <label for="ititulo">Título</label>
+        <label class="tilulo" for="ititulo">Título</label>
             <input id="ititulo" type="text" name="titulo" placeholder="Título" required><br>
         <label for="idesc">Descrição</label>
             <textarea rows="15" id="idesc" name="descricao" placeholder="Descrição"></textarea><br>
@@ -21,7 +22,7 @@
                 <img class="imagem" id="preview" src="" alt="Prévia da imagem" style="max-width: 300px; border: 1px solid #000; ">
             </div>
             <button class="container destaque-btn btn-enviar" type="submit">
-            <img src="imagens-icones/salvar.JPG" alt="incluir">
+            <img src="imagens-icones/salvar.JPG" alt="salvar">
             </button>
         <!-- <button class="destaque-btn btn-limpar-upload" type="reset" onclick="limparPreview()">Limpar</button> -->
             <a href="lista.php" class="container destaque-btn btn-pesquisar">

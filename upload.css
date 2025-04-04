@@ -1,0 +1,28 @@
+@charset "UTF-8";
+body{
+    background: linear-gradient(to top,#b0b0b0, #e0e0e0);
+    color: #333;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    margin: auto;
+}
+
+h2.uploadhtml{
+    color: #0053B3;
+    margin: 20px;
+    text-align: center;
+    margin: 20px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.258);  
+}
+form.upload{
+    background-color:rgba(87, 86, 86, 0.829);
+    width: 100%;
+    min-height: 200px;
+    max-width: 1000px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+}

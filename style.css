@@ -140,26 +140,7 @@ input, textarea {
 div .container{
     text-align: center;
 }
-h2.uploadhtml{
-display: block;
-text-align: center;
-margin: 10px;
-text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.258);
 
-
-}
-
-form.upload{
-    background-color:rgba(87, 86, 86, 0.829);
-    width: 100%;
-    min-height: 300px;
-    max-width: 1000px;
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    
-
-}
 /* Responsividade */
 @media (max-width: 768px) {
     .lista {
