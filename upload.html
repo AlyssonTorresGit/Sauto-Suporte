@@ -18,25 +18,27 @@
             <label class="tilulo" for="ititulo">Título</label>
                <input id="ititulo" type="text" name="titulo" placeholder="Título" required><br>
             <label for="idesc">Descrição</label>
-                <textarea rows="15" id="idesc" name="descricao" placeholder="Descrição"></textarea><br>
+                <textarea rows="10" id="idesc" name="descricao" placeholder="Descrição"></textarea><br>
             <label for="iresol">Resolução</label>
-                <textarea rows="15" id="iresol" name="resolucao" placeholder="Resolução"></textarea><br>
+                <textarea rows="10" id="iresol" name="resolucao" placeholder="Resolução"></textarea><br>
             <input type="file" name="imagem" accept="image/*" id="imagemInput" required><br>
         </div>
 
-         <div id="previewContainer" style="display: none; margin-top: 10px;">
+        <div class="botoes-upload">
+          <button class="btn-salvar" type="submit">
+          <img src="imagens-icones/salvar.JPG" alt="salvar">
+          </button>
+          <a href="lista.php" class="btn-consultar">
+              <img src="imagens-icones/consultar.JPG" alt="consultar">
+          </a>
+          </div>
+
+         <div id="preview-imagem" style="display: none; margin-top: 10px;">
             <p>Prévia da Imagem:</p>
-            <img class="imagem" id="preview" src="" alt="Prévia da imagem" style="max-width: 300px; border: 1px solid #000; ">
+            <img class="imagem" id="preview" src="" alt="Prévia da imagem" style="max-width: 600px; border: 1px solid #000; ">
         </div>
 
-        <div class="botoes-upload">
-            <button class="btn-salvar" type="submit">
-            <img src="imagens-icones/salvar.JPG" alt="salvar">
-            </button>
-            <a href="lista.php" class="btn-consultar">
-                <img src="imagens-icones/consultar.JPG" alt="consultar">
-            </a>
-        </div>
+        
 
     </form>
     <script>
@@ -47,7 +49,7 @@
                 const reader = new FileReader(); // Cria um leitor de arquivos
                 reader.onload = function(e) {
                     document.getElementById('preview').src = e.target.result; // Define a prévia da imagem
-                    document.getElementById('previewContainer').style.display = 'block'; // Mostra o container
+                    document.getElementById('preview-imagem').style.display = 'block'; // Mostra o container
                 };
                 reader.readAsDataURL(file); // Converte a imagem para base64
             }
@@ -55,7 +57,7 @@
 
         function limparPreview() {
             document.getElementById('preview').src = ""; // Remove a imagem da pré-visualização
-            document.getElementById('previewContainer').style.display = "none"; // Esconde o container
+            document.getElementById('preview-imagem').style.display = "none"; // Esconde o container
         }
         
     </script>

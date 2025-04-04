@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sauto Suporte</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lista.css">
 </head>
 <body>
     <main class="erros">

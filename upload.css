@@ -12,6 +12,7 @@ body{
 h2.uploadhtml{
     font-weight: bold;
     color: #0053B3;
+    margin-top: 0px;
     margin: 20px;
     text-align: center;
     margin: 20px;
@@ -29,7 +30,7 @@ form.upload{
 }
 
 form.upload > div.botoes-upload{
-    margin: 10px 0px;
+    margin-top: 20px;
     /* display: block; */
     display: flex;
     gap: 10px; /* Define o espaçamento entre os elementos */
@@ -39,8 +40,15 @@ form.upload > div.botoes-upload{
 
 form.upload > div.botoes-upload > button.btn-salvar {
     border: none;
-    
+}
 
+form.upload > label { 
+    font-weight: bold; /* Deixa o texto do label em negrito */
+    padding-top: 5px;
+    text-align: centro;
+    color: #222;
+    text-shadow:1px 1px 2px #999;
+    font-size: 1.5em;
 }
 
 @media (max-width: 768px) {

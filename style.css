@@ -23,24 +23,8 @@ main {
     text-align: center;
     overflow: auto;
 }
-label{
-    font-weight: bold; /* Deixa o texto do label em negrito */
-    padding-top: 10px;
-    text-align: left;
-    color: bla#222;
-    text-shadow:1px 1px 2px #999;
-}
-/* Títulos */
-.h1-pesquisa {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #0056b3;
-}
-.h2-pesquisa {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #333;
-}
+
+
 /* Campo de pesquisa */
 .lista {
     display: flex;

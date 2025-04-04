@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/* Títulos */
+h1.pesquisa {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #0056b3;
+}
+h2.pesquisa {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+/* corpo da lista */
+main.erros{
+    background-color:rgba(87, 86, 86, 0.829);
+    width: 100%;
+    min-height: 200px;
+    max-width: 1000px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+}
