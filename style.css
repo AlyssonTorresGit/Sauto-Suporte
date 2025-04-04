@@ -1,0 +1,194 @@
+* { /* Reset básico */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+/* Estilização do corpo da página */
+body {
+    background: linear-gradient(to top,#b0b0b0, #e0e0e0);
+    color: #333;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+/* Estilização do conteúdo principal */
+main {
+    background: #e5e5e5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+    overflow: auto;
+}
+label{
+    font-weight: bold; /* Deixa o texto do label em negrito */
+    padding-top: 10px;
+    text-align: left;
+    color: bla#222;
+    text-shadow:1px 1px 2px #999;
+}
+/* Títulos */
+.h1-pesquisa {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #0056b3;
+}
+.h2-pesquisa {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+/* Campo de pesquisa */
+.lista {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.campo-pesquisa {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+/* Botões */
+textarea{
+    resize: vertical; /* Permite redimensionar apenas na vertical */
+    min-height: 100px; /* Define uma altura mínima */
+}
+input, textarea {
+    width: 100%;
+    margin: 10px opx;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}
+.btn-QSaoImagens{
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 2px;
+}
+.destaque-btn {
+    background: #d6d6d6;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border-radius: 5px;
+    padding: 5px;
+}
+.destaque-btn:hover {
+    transform: scale(1.1);
+    border-radius: 5px;
+}
+.destaque-btn img, .btn img {
+    width: 70px;
+    height: 55px;
+    border-radius: 5px;
+
+}
+/* Estilização dos blocos de resultado */
+.blocoLista {
+    background: #fff;
+    padding: 15px;
+    white-space: pre-wrap; /* Mantém quebras de linha */
+    word-wrap: break-word;  /* Evita que palavras longas estourem a largura */
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+.tiltulo-lista {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 5px;
+    text-align: center;
+    padding: 0px 0px 10px 0px
+}
+.divImagemView {
+    text-align: center;
+    margin-top: 10px;
+    white-space: pre-wrap; /* Mantém quebras de linha */
+    word-wrap: break-word;  /* Evita que palavras longas estourem a largura */
+}
+.imagem {
+    max-width: 500px;
+    height: auto;
+    width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.btn:hover {
+    transform: scale(1.1);
+}
+div .container{
+    text-align: center;
+}
+h2.uploadhtml{
+display: block;
+text-align: center;
+margin: 10px;
+text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.258);
+
+
+}
+
+form.upload{
+    background-color:rgba(87, 86, 86, 0.829);
+    width: 100%;
+    min-height: 300px;
+    max-width: 1000px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    
+
+}
+/* Responsividade */
+@media (max-width: 768px) {
+    .lista {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .campo-pesquisa {
+        width: 100%;
+    }
+
+    .destaque-btn img {
+        width: 50px;
+        height: 45px;
+    }
+    .imagem{
+        width: 100%;
+        max-width: 100%;
+    }
+    form.upload{
+        padding: 15%;
+    }
+    
+
+
+
+}
+
+
+
+
+

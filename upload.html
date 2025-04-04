@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de Imagem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 class="uploadhtml">Fazer Upload</h2>
+    <form action="upload.php" class="upload" method="POST" enctype="multipart/form-data">
+        <label for="ititulo">Título</label>
+            <input id="ititulo" type="text" name="titulo" placeholder="Título" required><br>
+        <label for="idesc">Descrição</label>
+            <textarea rows="15" id="idesc" name="descricao" placeholder="Descrição"></textarea><br>
+        <label for="iresol">Resolução</label>
+            <textarea rows="15" id="iresol" name="resolucao" placeholder="Resolução"></textarea><br>
+        <input type="file" name="imagem" accept="image/*" id="imagemInput" required><br>
+            <div id="previewContainer" style="display: none; margin-top: 10px;">
+                <p>Prévia da Imagem:</p>
+                <img class="imagem" id="preview" src="" alt="Prévia da imagem" style="max-width: 300px; border: 1px solid #000; ">
+            </div>
+            <button class="container destaque-btn btn-enviar" type="submit">
+            <img src="imagens-icones/salvar.JPG" alt="incluir">
+            </button>
+        <!-- <button class="destaque-btn btn-limpar-upload" type="reset" onclick="limparPreview()">Limpar</button> -->
+            <a href="lista.php" class="container destaque-btn btn-pesquisar">
+                <img src="imagens-icones/consultar.JPG" alt="consultar">
+            </a>
+
+    </form>
+    <script>
+        document.getElementById('imagemInput').addEventListener('change', function(event) {
+            const file = event.target.files[0]; // Obtém o arquivo selecionado
+            
+            if (file) {
+                const reader = new FileReader(); // Cria um leitor de arquivos
+                reader.onload = function(e) {
+                    document.getElementById('preview').src = e.target.result; // Define a prévia da imagem
+                    document.getElementById('previewContainer').style.display = 'block'; // Mostra o container
+                };
+                reader.readAsDataURL(file); // Converte a imagem para base64
+            }
+        });
+
+        function limparPreview() {
+            document.getElementById('preview').src = ""; // Remove a imagem da pré-visualização
+            document.getElementById('previewContainer').style.display = "none"; // Esconde o container
+        }
+        
+    </script>
+</body>
+</html>
