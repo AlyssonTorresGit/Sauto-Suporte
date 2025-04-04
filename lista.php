@@ -9,14 +9,14 @@
 </head>
 <body>
     <main class="erros">
-        <h1 class="h1-pesquisa">Bibliotéca de erros - Sauto Suporte</h1>
-        <h2 class="h2-pesquisa">Pesquisar Erros</h2>
+        <h1 class="pesquisa">Bibliotéca de erros - Sauto Suporte</h1>
+        <h2 class="pesquisa">Pesquisar Erros</h2>
         <form class="lista" method="GET">
             <input class="campo-pesquisa" type="text" name="query" placeholder="Digite sua pesquisa">
-            <button class="destaque-btn btn-QSaoImagens btn-consultar" type="submit">
+            <button class="btn-consultar" type="submit">
                 <img src="imagens-icones/consultar.JPG" alt="consultar">
             </button>
-            <a class="destaque-btn btn-QSaoImagens btn-inclur" href="upload.html">
+            <a class="btn-inclur" href="upload.html">
                 <img src="imagens-icones/incluir.JPG" alt="incluir">
             </a>
         </form>

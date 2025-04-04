@@ -33,13 +33,7 @@ main {
     margin-bottom: 20px;
     flex-wrap: wrap;
 }
-.campo-pesquisa {
-    flex: 1;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
+
 /* Botões */
 textarea{
     resize: vertical; /* Permite redimensionar apenas na vertical */

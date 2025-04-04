@@ -1,16 +1,84 @@
 @charset "UTF-8";
 
 /* Títulos */
-h1.pesquisa {
+main.erros{
+    background-color:rgba(87, 86, 86, 0.829);
+    width: 100%;
+    min-height: 200px;
+    max-width: 1000px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+}
+main.erros > h1.pesquisa {
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 10px;    
     color: #0056b3;
 }
-h2.pesquisa {
+main.erros > h2.pesquisa {
     font-size: 20px;
     margin-bottom: 15px;
     color: #333;
 }
+
+main.erros > form.lista > input.campo-pesquisa{
+    color: #0056b3;
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.521);
+}
+/* botoes consultar e incluir na lista */
+/* consultar */
+main.erros > form.lista > button.btn-consultar{
+    padding-top: 0px;
+    display: block;
+    cursor: pointer;
+    all: unset; /* Remove todos os estilos do botão */ 
+}
+
+main.erros > form.lista > button.btn-consultar img{
+    padding-top: auto;
+    margin: auto;
+    display: flex;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.600);
+    transition: transform 0.2s
+
+}main.erros > form.lista > button.btn-consultar img:hover{
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.486);
+    border-radius: 5px;
+    transform: scale(1.1);
+}
+/* incluir */
+main.erros > form.lista > a.btn-inclur{
+    padding: 0px;
+    display: block;
+    cursor: pointer;
+    
+}
+main.erros > form.lista > a.btn-inclur img{
+    padding: auto;
+    margin: auto;
+    display: flex;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.375);
+    transition: transform 0.2s
+}
+main.erros > form.lista > a.btn-inclur img:hover{
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.454);
+    border-radius: 5px;
+    transform: scale(1.1);
+}
+
+
+
+
 /* corpo da lista */
 main.erros{
     background-color:rgba(87, 86, 86, 0.829);
@@ -22,3 +90,38 @@ main.erros{
     border-radius: 10px;
     margin: auto;
 }
+
+
+
+
+@media (max-width: 768px) {
+    main.erros {
+     padding: 10px;
+    }
+    .lista {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .campo-pesquisa {
+        width: 100%;
+    }
+
+    .destaque-btn img {
+        width: 50px;
+        height: 45px;
+    }
+    .imagem{
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    form.upload {
+        padding: 20px;
+
+    }
+}
+
+
