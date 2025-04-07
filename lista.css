@@ -90,6 +90,27 @@ main.erros{
     border-radius: 10px;
     margin: auto;
 }
+.painel-duplo {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Responsivo */
+}
+
+.erros {
+    flex: 2;
+    min-width: 300px;
+}
+
+.lista-sugestoes {
+    flex: 1;
+    background-color: #f7f7f7;
+    padding: 15px;
+    border-radius: 10px;
+    max-height: 80vh;
+    overflow-y: auto;
+    min-width: 250px;
+}
 
 
 
