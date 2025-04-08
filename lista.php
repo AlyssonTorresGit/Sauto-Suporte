@@ -36,76 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sauto Suporte</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-
-    .painel-duplo {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-
-    .coluna-erros {
-      flex: 2;
-      min-width: 300px;
-    }
-
-    .lista-sugestoes {
-      flex: 1;
-      background-color: #f1f1f1;
-      padding: 15px;
-      border-radius: 10px;
-      max-height: 80vh;
-      overflow-y: auto;
-      min-width: 250px;
-    }
-
-    .sugestao-box {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 6px;
-    }
-
-    .pesquisa {
-      margin-top: 0;
-    }
-
-    .lista {
-      margin-bottom: 20px;
-    }
-
-    .campo-pesquisa {
-      padding: 8px;
-      width: 200px;
-    }
-
-    .blocoLista {
-      border: 1px solid #ddd;
-      padding: 10px;
-      margin-bottom: 10px;
-      background: #fff;
-    }
-
-    .divImagemView {
-      margin-top: 10px;
-    }
-
-    .btn-consultar img,
-    .btn-inclur img {
-      height: 20px;
-    }
-    .sugestao-box.resolvida {
-     background-color: #e0ffe0;
-     border-left: 5px solid green;
-    }
-    .sugestao-box.pendente {
-    border-left: 5px solid orange;
-    }
+   
   </style>
 </head>
 <body>
@@ -147,30 +78,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
 
             if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
+            
+            //(listar tudo, tit,sup, desc,img,res)   
+            //  echo "<div class='blocoLista'>"; (listar tudo, tit,sup, desc,img,res)
+            // echo "<h3 class='tiltulo-lista'>" . $row['titulo'] . "</h3>";
+            // echo "<p><strong>Suporte:</strong> " . htmlspecialchars($row['suporte']) . "</p>";
+            // echo "<p>" . $row['descricao'] . "</p>";
+            // echo "<div class='divImagemView'>";
+            // echo "<img class='imagem img-preview' src='" . $row['imagem'] . "' width='200'>";
+            // echo "</div>";
+            // echo "<p>" . $row['resolucao'] . "</p>";
             echo "<div class='blocoLista'>";
-            echo "<h3 class='tiltulo-lista'>" . $row['titulo'] . "</h3>";
-            echo "<p><strong>Suporte:</strong> " . htmlspecialchars($row['suporte']) . "</p>";
-            echo "<p>" . $row['descricao'] . "</p>";
+            echo "<a href='detalhes.php?id=" . $row['id'] . "' style='text-decoration: none; color: inherit; display: block;'>";
+            echo "<h3 class='tiltulo-lista'>" . htmlspecialchars($row['titulo']) . "</h3>";
             echo "<div class='divImagemView'>";
-            echo "<img class='imagem img-preview' src='" . $row['imagem'] . "' width='200'>";
+            echo "<img class='imagem img-preview' src='" . $row['imagem'] . "' width='100'>";
             echo "</div>";
-            echo "<p>" . $row['resolucao'] . "</p>";
-
-            echo "<form class='formEditarExcluir' method='POST' action='excluir.php' onsubmit='return confirmarExclusao();'>";
-            echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
-            echo "<input type='hidden' name='imagem' value='" . $row['imagem'] . "'>";
-            echo "<div class='container'>";
-            echo "<a href='editar.php?id=" . $row['id'] . "' class='destaque-btn btn-QSaoImagens btn btn-editar'>";
-            echo "<img src='imagens-icones/alterar.JPG' alt='Alterar'>";
             echo "</a>";
-            echo "<button type='submit' class='destaque-btn btn-QSaoImagens btn btn-excluir'>";
-            echo "<img src='imagens-icones/excluir.JPG' alt='Excluir'>";
-            echo "</button>";
             echo "</div>";
-            echo "</form>";
-            echo "</div>";
+
+
+            // echo "<form class='formEditarExcluir' method='POST' action='excluir.php' onsubmit='return confirmarExclusao();'>";
+            // echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
+            // echo "<input type='hidden' name='imagem' value='" . $row['imagem'] . "'>";
+            // echo "<div class='container'>";
+            // echo "<a href='editar.php?id=" . $row['id'] . "' class='destaque-btn btn-QSaoImagens btn btn-editar'>";
+            // echo "<img src='imagens-icones/alterar.JPG' alt='Alterar'>";
+            // echo "</a>";
+            // echo "<button type='submit' class='destaque-btn btn-QSaoImagens btn btn-excluir'>";
+            // echo "<img src='imagens-icones/excluir.JPG' alt='Excluir'>";
+            // echo "</button>";
+            // echo "</div>";
+            // echo "</form>";
+            // echo "</div>";
             }
-            } else {
+            }
+             else {
             echo "Nenhum resultado encontrado.";
             }
 

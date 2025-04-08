@@ -145,4 +145,96 @@ main.erros{
     }
 }
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  .painel-duplo {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .coluna-erros {
+    flex: 2;
+    min-width: 300px;
+  }
+
+  .lista-sugestoes {
+    flex: 1;
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 10px;
+    max-height: 80vh;
+    overflow-y: auto;
+    min-width: 250px;
+  }
+
+  .sugestao-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: background-color 0.2s;
+  }
+
+  .pesquisa {
+    margin-top: 0;
+  }
+
+  .lista {
+    margin-bottom: 20px;
+  }
+
+  .campo-pesquisa {
+    padding: 8px;
+    width: 200px;
+  }
+  #resultados {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .blocoLista {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #fff;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  cursor: pointer;
+transition: box-shadow 0.2s ease;
+  }
+  .blocoLista:hover {
+background-color: #f5f5f5;
+box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+  .divImagemView {
+    margin-top: 10px;
+  }
+
+  .btn-consultar img,
+  .btn-inclur img {
+    height: 20px;
+  }
+  .sugestao-box.resolvida {
+   background-color: #e0ffe0;
+   border-left: 5px solid green;
+  }
+  .sugestao-box.pendente {
+  border-left: 5px solid orange;
+  }
+
 
