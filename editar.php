@@ -48,6 +48,7 @@ $conn->close();
 
     </style>
 </head>
+
 <body>
     <main>
         <h2>Editar Dados</h2>
@@ -84,5 +85,12 @@ $conn->close();
             </div>    
         </form>
     </main>
+    <script>
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      window.history.back(); // Volta para a página anterior
+    }
+  });
+</script>
 </body>
 </html>

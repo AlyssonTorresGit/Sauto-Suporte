@@ -1,64 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload</title>
-    <style>
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Upload</title>
+  <link rel="stylesheet" href="upload.css">
 </head>
 <body>
-    <h2 class="uploadhtml">Fazer Upload</h2>
-    <form action="upload.php" class="upload" method="POST" enctype="multipart/form-data">
-        <div  class="folha">
-            <label class="Suporte" for="isuporte">Seu nome (Suporte)</label>
-                <input type="text" name="suporte" placeholder="Seu nome" required>
-            <label class="tilulo" for="ititulo">Título</label>
-                <input id="ititulo" type="text" name="titulo" placeholder="Título" required><br>
-            <label for="idesc">Descrição</label>
-                <textarea rows="10" id="idesc" name="descricao" placeholder="Descrição"></textarea><br>
-            <label for="iresol">Resolução</label>
-                <textarea rows="10" id="iresol" name="resolucao" placeholder="Resolução"></textarea><br>
-            <input type="file" name="imagem" accept="image/*" id="imagemInput" required><br>
-        </div>
+  <div class="container">
+    <h1>Fazer Upload</h1>
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+      <label for="isuporte">Seu nome (Suporte)</label>
+      <input type="text" id="isuporte" name="suporte" placeholder="Seu nome" required>
 
-        <div class="botoes-upload">
-          <button class="btn-salvar" type="submit">
-          Salvar
-          </button>
-          <a href="lista.php" class="btn-consultar">
-            Consultar
-          </a>
-          </div>
+      <label for="ititulo">Título</label>
+      <input type="text" id="ititulo" name="titulo" placeholder="Título" required>
 
-         <div id="preview-imagem" style="display: none; margin-top: 10px;">
-            <p>Prévia da Imagem:</p>
-            <img class="imagem" id="preview" src="" alt="Prévia da imagem" style="max-width: 600px; border: 1px solid #000; ">
-        </div>
+      <label for="idesc">Descrição</label>
+      <textarea id="idesc" name="descricao" rows="6" placeholder="Descrição do erro"></textarea>
 
-        
+      <label for="iresol">Resolução</label>
+      <textarea id="iresol" name="resolucao" rows="6" placeholder="Como resolver?"></textarea>
 
+      <label for="imagemInput">Imagem</label>
+      <input type="file" name="imagem" id="imagemInput" accept="image/*" required>
+
+      <div id="preview-imagem" style="display: none; margin-top: 20px;">
+        <p>Prévia da Imagem:</p>
+        <img id="preview" src="" alt="Prévia da imagem" style="max-width: 600px; border: 1px solid #000; border-radius: 8px;">
+      </div>
+
+      <div class="btn-container">
+        <button type="submit">Salvar</button>
+        <a href="lista.php">Consultar</a>
+      </div>
     </form>
-    <script>
-        document.getElementById('imagemInput').addEventListener('change', function(event) {
-            const file = event.target.files[0]; // Obtém o arquivo selecionado
-            
-            if (file) {
-                const reader = new FileReader(); // Cria um leitor de arquivos
-                reader.onload = function(e) {
-                    document.getElementById('preview').src = e.target.result; // Define a prévia da imagem
-                    document.getElementById('preview-imagem').style.display = 'block'; // Mostra o container
-                };
-                reader.readAsDataURL(file); // Converte a imagem para base64
-            }
-        });
+  </div>
 
-        function limparPreview() {
-            document.getElementById('preview').src = ""; // Remove a imagem da pré-visualização
-            document.getElementById('preview-imagem').style.display = "none"; // Esconde o container
-        }
-        
-    </script>
+  <script>
+    document.getElementById('imagemInput').addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById('preview').src = e.target.result;
+          document.getElementById('preview-imagem').style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
 </body>
 </html>
+
+

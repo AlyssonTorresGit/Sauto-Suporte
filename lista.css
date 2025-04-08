@@ -112,10 +112,13 @@
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
   }
   
   button:hover, a:hover {
     background-color: #0056b3;
+    transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
   
   /* RESPONSIVO */

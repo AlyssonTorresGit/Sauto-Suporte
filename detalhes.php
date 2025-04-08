@@ -60,7 +60,7 @@ $row = $result->fetch_assoc();
       <form method="POST" action="excluir.php" onsubmit="return confirmarExclusao();">
         <input type="hidden" name="id" value="<?= $row['id'] ?>">
         <input type="hidden" name="imagem" value="<?= $row['imagem'] ?>">
-        <button type="submit" style="background: none; border: none; padding: 0;"> Excluir</button>
+        <button type="submit" class="botao-excluir">Excluir</button>
       </form>
     </div>
 
@@ -72,5 +72,12 @@ $row = $result->fetch_assoc();
       return confirm("Tem certeza que deseja excluir este item?");
     }
   </script>
+  <script>
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+      window.history.back(); // Volta para a página anterior
+    }
+  });
+</script>
 </body>
 </html>
