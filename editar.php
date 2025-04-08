@@ -44,7 +44,9 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Item</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
 </head>
 <body>
     <main>
@@ -74,10 +76,10 @@ $conn->close();
 
             <div class="botao-container-salvar-alteracao">
                 <button class="destaque-btn btn-salvar" type="submit">
-                    <img src="imagens-icones/salvar.JPG" alt="salvar">
+                Salvar
                 </button>
                 <a href="lista.php" class="destaque-btn btn-abortar">
-                    <img src="imagens-icones/abortar.JPG" alt="retornar">
+                    Retornar
                 </a>
             </div>    
         </form>

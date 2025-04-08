@@ -35,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sauto Suporte</title>
+  <link rel="stylesheet" href="lista.css">
   <style>
    
   </style>
@@ -45,11 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
   <h2 class="pesquisa">Pesquisar Erros</h2>
   <form class="lista" method="GET">
     <input class="campo-pesquisa" type="text" name="query" placeholder="Digite sua pesquisa">
-    <button class="btn-consultar" type="submit">
-      <img src="imagens-icones/consultar.JPG" alt="consultar">
-    </button>
-    <a class="btn-inclur" href="upload.html">
-      <img src="imagens-icones/incluir.JPG" alt="incluir">
+    <button class="btn-consultar" type="submit">Consultar</button>
+    <a class="btn-inclur" href="upload.html">Incluir
     </a>
   </form>
 
@@ -79,38 +77,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
             if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
             
-            //(listar tudo, tit,sup, desc,img,res)   
-            //  echo "<div class='blocoLista'>"; (listar tudo, tit,sup, desc,img,res)
-            // echo "<h3 class='tiltulo-lista'>" . $row['titulo'] . "</h3>";
-            // echo "<p><strong>Suporte:</strong> " . htmlspecialchars($row['suporte']) . "</p>";
-            // echo "<p>" . $row['descricao'] . "</p>";
+            // echo "<div class='blocoLista'>";
+            // echo "<a href='detalhes.php?id=" . $row['id'] . "' style='text-decoration: none; color: inherit; display: block;'>";
+            // echo "<h3 class='tiltulo-lista'>" . htmlspecialchars($row['titulo']) . "</h3>";
             // echo "<div class='divImagemView'>";
-            // echo "<img class='imagem img-preview' src='" . $row['imagem'] . "' width='200'>";
+            // echo "<img class='imagem img-preview' src='" . $row['imagem'] . "' width='100'>";
             // echo "</div>";
-            // echo "<p>" . $row['resolucao'] . "</p>";
-            echo "<div class='blocoLista'>";
-            echo "<a href='detalhes.php?id=" . $row['id'] . "' style='text-decoration: none; color: inherit; display: block;'>";
-            echo "<h3 class='tiltulo-lista'>" . htmlspecialchars($row['titulo']) . "</h3>";
-            echo "<div class='divImagemView'>";
-            echo "<img class='imagem img-preview' src='" . $row['imagem'] . "' width='100'>";
-            echo "</div>";
-            echo "</a>";
-            echo "</div>";
-
-
-            // echo "<form class='formEditarExcluir' method='POST' action='excluir.php' onsubmit='return confirmarExclusao();'>";
-            // echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
-            // echo "<input type='hidden' name='imagem' value='" . $row['imagem'] . "'>";
-            // echo "<div class='container'>";
-            // echo "<a href='editar.php?id=" . $row['id'] . "' class='destaque-btn btn-QSaoImagens btn btn-editar'>";
-            // echo "<img src='imagens-icones/alterar.JPG' alt='Alterar'>";
             // echo "</a>";
-            // echo "<button type='submit' class='destaque-btn btn-QSaoImagens btn btn-excluir'>";
-            // echo "<img src='imagens-icones/excluir.JPG' alt='Excluir'>";
-            // echo "</button>";
             // echo "</div>";
-            // echo "</form>";
-            // echo "</div>";
+            echo "<div class='blocoLista' onclick=\"window.location.href='detalhes.php?id=" . $row['id'] . "'\">";
+            echo "<img src='" . $row['imagem'] . "' alt='Miniatura'>";
+            echo "<div class='info'>";
+            echo "<h3>" . htmlspecialchars($row['titulo']) . "</h3>";
+            echo "</div>";
+            echo "</div>";
+
             }
             }
              else {

@@ -33,9 +33,7 @@ $row = $result->fetch_assoc();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Detalhes do Erro</title>
-  <style>
-    
-  </style>
+  <link rel="stylesheet" href="detalhes.css">
 </head>
 <body>
   <div class="container">
@@ -57,16 +55,12 @@ $row = $result->fetch_assoc();
     </div>
 
     <div class="btn-container">
-      <a href="editar.php?id=<?= $row['id'] ?>">
-        <img src="imagens-icones/alterar.JPG" alt="Editar">
-      </a>
+      <a href="editar.php?id=<?= $row['id'] ?>">Editar</a>
 
       <form method="POST" action="excluir.php" onsubmit="return confirmarExclusao();">
         <input type="hidden" name="id" value="<?= $row['id'] ?>">
         <input type="hidden" name="imagem" value="<?= $row['imagem'] ?>">
-        <button type="submit" style="background: none; border: none; padding: 0;">
-          <img src="imagens-icones/excluir.JPG" alt="Excluir">
-        </button>
+        <button type="submit" style="background: none; border: none; padding: 0;"> Excluir</button>
       </form>
     </div>
 
