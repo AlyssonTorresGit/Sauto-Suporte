@@ -99,11 +99,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
     .btn-inclur img {
       height: 20px;
     }
+    .sugestao-box.resolvida {
+     background-color: #e0ffe0;
+     border-left: 5px solid green;
+    }
+    .sugestao-box.pendente {
+    border-left: 5px solid orange;
+    }
   </style>
 </head>
 <body>
 
-  <h1 class="pesquisa">Bibliotéca de erros - Sauto Suporte</h1>
+  <h1 class="pesquisa">Base de Conhecimentos - Sauto Suporte</h1>
   <h2 class="pesquisa">Pesquisar Erros</h2>
   <form class="lista" method="GET">
     <input class="campo-pesquisa" type="text" name="query" placeholder="Digite sua pesquisa">
@@ -174,36 +181,80 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
 
     <!-- COLUNA DE SUGESTÕES -->
     <aside class="lista-sugestoes">
-        <form method="POST" action="" style="margin-bottom: 20px;">
-            <input type="text" name="nome" placeholder="Seu nome" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
-            <textarea name="sugestao" placeholder="Digite sua sugestão..." required style="width: 100%; padding: 8px; height: 100px;"></textarea>
-            <button type="submit" name="enviarSugestao" style="margin-top: 10px; padding: 8px 12px;">Enviar Sugestão</button>
-        </form>
-      <h2>Erros, Sugestões e  Melhorias</h2>
-            <?php
-            $conn = new mysqli($host, $user, $pass, $db);
-            if ($conn->connect_error) {
-                die("Erro na conexão: " . $conn->connect_error);
-            }
+    <!-- Formulário de envio -->
+    <form method="POST" action="" style="margin-bottom: 20px;">
+        <input type="text" name="nome" placeholder="Seu nome" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
+        <textarea name="sugestao" placeholder="Digite sua sugestão..." required style="width: 100%; padding: 8px; height: 100px;"></textarea>
+        <button type="submit" name="enviarSugestao" style="margin-top: 10px; padding: 8px 12px;">Enviar Sugestão</button>
+    </form>
 
-            $sqlSugestoes = "SELECT * FROM sugestoes ORDER BY data_envio DESC";
-            $resultSugestoes = $conn->query($sqlSugestoes);
+    <h2>Erros, Sugestões e Melhorias</h2>
+    <form method="GET" style="margin-bottom: 15px;">
+    <label for="filtro">Filtrar por:</label>
+    <select name="filtro" id="filtro" onchange="this.form.submit()" style="margin-left: 10px;">
+        <option value="todas" <?= ($_GET['filtro'] ?? '') === 'todas' ? 'selected' : '' ?>>Todas</option>
+        <option value="pendentes" <?= ($_GET['filtro'] ?? '') === 'pendentes' ? 'selected' : '' ?>>Pendentes</option>
+        <option value="resolvidas" <?= ($_GET['filtro'] ?? '') === 'resolvidas' ? 'selected' : '' ?>>Resolvidas</option>
+    </select>
+</form>
 
-            if ($resultSugestoes->num_rows > 0) {
-                while ($sug = $resultSugestoes->fetch_assoc()) {
-                echo "<div class='sugestao-box'>";
-                echo "<strong>" . htmlspecialchars($sug['nome']) . ":</strong> ";
-                echo "<p>" . nl2br(htmlspecialchars($sug['sugestao'])) . "</p>";
-                echo "<small>Enviado em: " . $sug['data_envio'] . "</small>";
-                echo "</div>";
-                }
+
+    <?php
+    $conn = new mysqli($host, $user, $pass, $db);
+    if ($conn->connect_error) {
+        die("Erro na conexão: " . $conn->connect_error);
+    }
+    
+    $filtro = $_GET['filtro'] ?? 'todas';
+    
+    if ($filtro === 'pendentes') {
+        $sqlSugestoes = "SELECT * FROM sugestoes WHERE resolvido = 0 ORDER BY data_envio DESC";
+        echo "<h3>Sugestões Pendentes</h3>";
+    } elseif ($filtro === 'resolvidas') {
+        $sqlSugestoes = "SELECT * FROM sugestoes WHERE resolvido = 1 ORDER BY data_envio DESC";
+        echo "<h3>Sugestões Resolvidas</h3>";
+    } else {
+        $sqlSugestoes = "SELECT * FROM sugestoes ORDER BY data_envio DESC";
+        echo "<h3>Todas as Sugestões</h3>";
+    }
+    
+    $resultSugestoes = $conn->query($sqlSugestoes);
+    
+    if ($resultSugestoes->num_rows > 0) {
+        while ($sug = $resultSugestoes->fetch_assoc()) {
+            $classe = $sug['resolvido'] ? 'resolvida' : 'pendente';
+            echo "<div class='sugestao-box $classe'>";
+            echo "<strong>" . htmlspecialchars($sug['nome']) . ":</strong> ";
+            echo "<p>" . nl2br(htmlspecialchars($sug['sugestao'])) . "</p>";
+            echo "<small>Enviado em: " . $sug['data_envio'] . "</small>";
+    
+            // Formulário de atualização
+            if (!$sug['resolvido']) {
+                echo "<form method='POST' action='marcar_resolvido.php' style='margin-top:10px;'>";
+                echo "<input type='hidden' name='id' value='" . $sug['id'] . "'>";
+                echo "<label style='display:block; margin-top:5px;'>
+                        <input type='checkbox' name='resolvido' value='1'>
+                        Marcar como Resolvido
+                      </label>";
+                echo "<textarea name='observacao' placeholder='Observação do admin...' style='width: 100%; margin-top: 5px;'>" . htmlspecialchars($sug['observacao']) . "</textarea>";
+                echo "<button type='submit' style='margin-top: 5px;'>Atualizar</button>";
+                echo "</form>";
             } else {
-                echo "<p>Nenhuma sugestão enviada ainda.</p>";
+                echo "<p style='color: green; margin-top: 5px;'><strong>Status:</strong> Resolvido</p>";
+                if (!empty($sug['observacao'])) {
+                    echo "<p><strong>Obs:</strong> " . htmlspecialchars($sug['observacao']) . "</p>";
+                }
             }
-
-            $conn->close();
-            ?>
-    </aside>
+    
+            echo "</div>";
+        }
+    } else {
+        echo "<p>Nenhuma sugestão encontrada para este filtro.</p>";
+    }
+    
+    $conn->close();
+    ?>
+</aside>
   </div>
 
   <script>
