@@ -44,9 +44,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Item</title>
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="editar.css">
 </head>
 
 <body>
@@ -86,9 +84,24 @@ $conn->close();
         </form>
     </main>
     <script>
+  // Mostra prévia da nova imagem ao selecionar
+  document.getElementById('novaImagemInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const preview = document.getElementById('preview');
+        preview.src = e.target.result;
+        document.getElementById('previewContainer').style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  // ESC para voltar
   document.addEventListener('keydown', function(event) {
     if (event.key === "Escape") {
-      window.history.back(); // Volta para a página anterior
+      window.history.back();
     }
   });
 </script>

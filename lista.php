@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
 </head>
 <body>
 
-  <h1 class="pesquisa">Base de Conhecimentos - Sauto Suporte</h1>
+  <h1 class="pesquisa">Base de Conhecimento - Sauto Suporte</h1>
   <h2 class="pesquisa">Pesquisar Erros</h2>
   <form class="lista" method="GET">
     <input class="campo-pesquisa" type="text" name="query" placeholder="Digite sua pesquisa">
