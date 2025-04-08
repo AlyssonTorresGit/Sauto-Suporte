@@ -29,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
     }
 }
 ?>
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -119,30 +118,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
   <div class="painel-duplo">
     <!-- COLUNA DE ERROS -->
     <div class="coluna-erros">
-      <div id="resultados">
-        <?php
-        $host = "localhost";
-        $user = "root";
-        $pass = "";
-        $db = "upload_site";
+         <div id="resultados">
+            <?php
+            $host = "localhost";
+            $user = "root";
+            $pass = "";
+            $db = "upload_site";
 
-        $conn = new mysqli($host, $user, $pass, $db);
-        if ($conn->connect_error) {
-          die("Erro na conexão: " . $conn->connect_error);
-        }
+            $conn = new mysqli($host, $user, $pass, $db);
+            if ($conn->connect_error) {
+            die("Erro na conexão: " . $conn->connect_error);
+            }
 
-        $query = $_GET['query'] ?? null;
-        if (isset($query)) {
-          $sql = "SELECT * FROM uploads WHERE titulo LIKE '%$query%' OR descricao LIKE '%$query%' ORDER BY id DESC";
-        } else {
-          $sql = "SELECT * FROM uploads ORDER BY id DESC";
-        }
-        $result = $conn->query($sql);
+            $query = $_GET['query'] ?? null;
+            if (isset($query)) {
+            $sql = "SELECT * FROM uploads WHERE titulo LIKE '%$query%' OR descricao LIKE '%$query%' ORDER BY id DESC";
+            } else {
+            $sql = "SELECT * FROM uploads ORDER BY id DESC";
+            }
+            $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
+            if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
             echo "<div class='blocoLista'>";
             echo "<h3 class='tiltulo-lista'>" . $row['titulo'] . "</h3>";
+            echo "<p><strong>Suporte:</strong> " . htmlspecialchars($row['suporte']) . "</p>";
             echo "<p>" . $row['descricao'] . "</p>";
             echo "<div class='divImagemView'>";
             echo "<img class='imagem img-preview' src='" . $row['imagem'] . "' width='200'>";
@@ -162,54 +162,54 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
             echo "</div>";
             echo "</form>";
             echo "</div>";
-          }
-        } else {
-          echo "Nenhum resultado encontrado.";
-        }
+            }
+            } else {
+            echo "Nenhum resultado encontrado.";
+            }
 
-        $conn->close();
-        ?>
+            $conn->close();
+            ?>
       </div>
     </div>
 
     <!-- COLUNA DE SUGESTÕES -->
     <aside class="lista-sugestoes">
-    <form method="POST" action="" style="margin-bottom: 20px;">
-  <input type="text" name="nome" placeholder="Seu nome" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
-  <textarea name="sugestao" placeholder="Digite sua sugestão..." required style="width: 100%; padding: 8px; height: 100px;"></textarea>
-  <button type="submit" name="enviarSugestao" style="margin-top: 10px; padding: 8px 12px;">Enviar Sugestão</button>
-</form>
-      <h2>Sugestões de melhoria</h2>
-      <?php
-      $conn = new mysqli($host, $user, $pass, $db);
-      if ($conn->connect_error) {
-        die("Erro na conexão: " . $conn->connect_error);
-      }
+        <form method="POST" action="" style="margin-bottom: 20px;">
+            <input type="text" name="nome" placeholder="Seu nome" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <textarea name="sugestao" placeholder="Digite sua sugestão..." required style="width: 100%; padding: 8px; height: 100px;"></textarea>
+            <button type="submit" name="enviarSugestao" style="margin-top: 10px; padding: 8px 12px;">Enviar Sugestão</button>
+        </form>
+      <h2>Erros, Sugestões e  Melhorias</h2>
+            <?php
+            $conn = new mysqli($host, $user, $pass, $db);
+            if ($conn->connect_error) {
+                die("Erro na conexão: " . $conn->connect_error);
+            }
 
-      $sqlSugestoes = "SELECT * FROM sugestoes ORDER BY data_envio DESC";
-      $resultSugestoes = $conn->query($sqlSugestoes);
+            $sqlSugestoes = "SELECT * FROM sugestoes ORDER BY data_envio DESC";
+            $resultSugestoes = $conn->query($sqlSugestoes);
 
-      if ($resultSugestoes->num_rows > 0) {
-        while ($sug = $resultSugestoes->fetch_assoc()) {
-          echo "<div class='sugestao-box'>";
-          echo "<strong>" . htmlspecialchars($sug['nome']) . ":</strong> ";
-          echo "<p>" . nl2br(htmlspecialchars($sug['sugestao'])) . "</p>";
-          echo "<small>Enviado em: " . $sug['data_envio'] . "</small>";
-          echo "</div>";
-        }
-      } else {
-        echo "<p>Nenhuma sugestão enviada ainda.</p>";
-      }
+            if ($resultSugestoes->num_rows > 0) {
+                while ($sug = $resultSugestoes->fetch_assoc()) {
+                echo "<div class='sugestao-box'>";
+                echo "<strong>" . htmlspecialchars($sug['nome']) . ":</strong> ";
+                echo "<p>" . nl2br(htmlspecialchars($sug['sugestao'])) . "</p>";
+                echo "<small>Enviado em: " . $sug['data_envio'] . "</small>";
+                echo "</div>";
+                }
+            } else {
+                echo "<p>Nenhuma sugestão enviada ainda.</p>";
+            }
 
-      $conn->close();
-      ?>
+            $conn->close();
+            ?>
     </aside>
   </div>
 
   <script>
-    function confirmarExclusao() {
-      return confirm("Tem certeza que deseja excluir este item?");
-    }
+        function confirmarExclusao() {
+        return confirm("Tem certeza que deseja excluir este item?");
+        }
   </script>
 
 </body>
