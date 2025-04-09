@@ -24,6 +24,12 @@ if (isset($_GET['id'])) {
     // Se encontrou o item, exibe o formulário
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
+    
+        // Se veio com o parâmetro resolver=1, marca como resolvido
+        if (isset($_GET['resolver']) && $_GET['resolver'] == 1) {
+            $row['status'] = 'resolvido';
+        }
+    
     } else {
         echo "Item não encontrado.";
         exit();
@@ -61,6 +67,19 @@ $conn->close();
 
             <label for="resolucao">Resolução:</label>
             <textarea rows="15" name="resolucao"><?php echo $row['resolucao']; ?></textarea><br>
+
+            <div class="status-container">
+            <label>Status:</label><br>
+
+            <input type="radio" id="resolvido" name="status" value="resolvido" <?php if ($row['status'] === 'resolvido') echo 'checked'; ?>>
+            <label for="resolvido">Resolvido</label>
+
+            <input type="radio" id="nao_resolvido" name="status" value="não resolvido" <?php if ($row['status'] === 'não resolvido') echo 'checked'; ?>>
+            <label for="nao_resolvido">Não resolvido</label>
+
+            </div>
+
+
                 <!-- Exibe a imagem atual -->
             <label>Imagem Atual:</label><br>
             <img class="imagem" id="imagemAtual" src="<?php echo $row['imagem']; ?>" width="200"><br>

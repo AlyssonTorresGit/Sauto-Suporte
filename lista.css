@@ -28,6 +28,120 @@
   /* BLOCO DE CADA ERRO */
   .blocoLista {
     display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin-bottom: 16px;
+  transition: background 0.3s;
+  gap: 20px;
+  }
+  
+  .blocoLista:hover {
+    background: #f9f9f9;
+  }
+  
+  .conteudo-esquerda {
+    flex: 1;
+  }
+  .clique-detalhe{
+    background: none;
+  }
+  .clique-detalhe {
+    text-decoration: none;
+    color: inherit;
+    flex: 1;
+  }
+  
+  .clique-detalhe img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .clique-detalhe h3 {
+    text-decoration: none;
+    color: inherit;
+    flex: 1;
+  }
+  .clique-detalhe {
+    text-decoration: none;
+    color: inherit;
+    flex: 1;
+  }
+.miniatura-titulo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  padding: 8px;
+  border-radius: 8px;
+}
+.miniatura-titulo:hover{
+  transform: scale(1.5);
+  transform: translateX(8px); /* Desliza um pouco para a direita */
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.miniatura-titulo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+
+.miniatura-titulo h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+}
+.acoes-direita .btn-resolver,
+.acoes-direita .btn-detalhes {
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #fff;
+  background: #3b82f6;
+  text-align: center;
+  transition: background 0.2s;
+}
+.acoes-direita .btn-resolver:hover,
+.acoes-direita .btn-detalhes:hover {
+  background: #2563eb;
+} 
+  .acoes-direita {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: right;
+    min-width: 120px;
+  }
+  
+  .acoes-direita a {
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #fff;
+    background: #3b82f6;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  
+  .acoes-direita a:hover {
+    background: #2563eb;
+  }
+  .blocoLista {
+    display: flex;
   align-items: center;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -62,30 +176,69 @@
   .lista-sugestoes {
     flex: 1;
     background-color: #fafafa;
-    padding: 16px;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 12px;
     border: 1px solid #ddd;
-    max-height: 80vh;
+    max-height: 85vh;
     overflow-y: auto;
-    min-width: 250px;
+    min-width: 280px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+  .lista-sugestoes h2, .lista-sugestoes h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #333;
   }
   
   /* CAIXA DE SUGESTÃO */
   .sugestao-box {
     background-color: #fff;
     border: 1px solid #ccc;
-    padding: 12px;
-    border-radius: 6px;
-    margin-bottom: 10px;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  .sugestao-box:hover {
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  .sugestao-box p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    line-height: 1.4;
   }
   
+  .sugestao-box form {
+    margin-top: 10px;
+  }
+  
+  .sugestao-box textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    resize: vertical;
+    min-height: 60px;
+  }
+  
+  .sugestao-box .acoes {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  
   .sugestao-box.resolvida {
-    border-left: 4px solid green;
+    border-left: 5px solid green;
     background-color: #e8f5e9;
   }
   
   .sugestao-box.pendente {
     border-left: 4px solid orange;
+    background-color: #fff9e6;
   }
   
   /* CAMPOS DE PESQUISA E BOTÕES */
@@ -138,6 +291,10 @@
 .btn-detalhes {
   background-color: #444;
   color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 10px;
 }
 
 .btn-editar {
@@ -172,17 +329,18 @@
   border-radius: 12px;
   font-weight: bold;
   color: white;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   display: inline-block;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 }
 
 .tag-resolvido {
-  background-color: #28a745; /* verde */
+  background-color: #28a746e0; /* verde */
 }
 
 .tag-pendente {
-  background-color: orange; /* laranja */
+  background-color: rgba(255, 166, 0, 0.869); /* laranja */
+  color: white;
 }
 
 /* Botão "Resolver" sempre azul */

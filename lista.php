@@ -78,22 +78,41 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
             while ($row = $result->fetch_assoc()) {
             
                 echo "<div class='blocoLista'>";
-                 echo "<img src='" . $row['imagem'] . "' alt='Miniatura'>";
-                echo "<div class='info'>";
-                echo "<h3>" . htmlspecialchars($row['titulo']) . "</h3>";
 
-                // Tag de resolvido ou não
-                $status = $row['resolvido'] ? "<span class='tag-resolvido'>Resolvido</span>" : "<span class='tag-pendente'>Não Resolvido</span>";
+            echo "<a href='detalhes.php?id=" . $row['id'] . "' class='clique-detalhe'>";
+             echo "<div class='miniatura-titulo'>";
+            echo "<img src='" . $row['imagem'] . "' alt='Miniatura'>";
+            echo "<h3>" . htmlspecialchars($row['titulo']) . "</h3>";
+            echo "</div>";
+            echo "</a>";
 
-                echo $status;
+            echo "<div class='acoes-direita'>";
+            $status = $row['status'] ? "<span class='tag-resolvido'>Resolvido</span>" : "<span class='tag-pendente'>Não Resolvido</span>";
+            echo $status;
+            echo "<a class='btn-resolver' href='editar.php?id=" . $row['id'] . "&resolver=1'>Resolver</a>";
+            echo "<a class='btn-detalhes' href='detalhes.php?id=" . $row['id'] . "'>Detalhes</a>";
+            echo "</div>";
 
-                // Botão para resolver (leva ao editar.php)
-                echo "<div class='acoes'>";
-                echo "<a class='btn-resolver' href='editar.php?id=" . $row['id'] . "'>Resolver</a>";
-                echo "</div>";
+            echo "</div>"; // .blocoLista
 
-                echo "</div>";
-                echo "</div>";
+                // echo "<div class='blocoLista'>";
+                //  echo "<img src='" . $row['imagem'] . "' alt='Miniatura'>";
+                // echo "<div class='info'>";
+                // echo "<h3>" . htmlspecialchars($row['titulo']) . "</h3>";
+
+                // // Tag de resolvido ou não
+                // $status = $row['status'] ? "<span class='tag-resolvido'>Resolvido</span>" : "<span class='tag-pendente'>Não Resolvido</span>";
+
+                // echo $status;
+
+                // // Botão para resolver e detalhes (leva ao editar.php detalhes.php)
+                // echo "<div class='acoes'>";
+                // echo "<a class='btn-resolver' href='editar.php?id=" . $row['id'] . "&resolver=1'>Resolver</a>";
+                // echo "<a class='btn-detalhes' href='detalhes.php?id=" . $row['id'] . "'>Detalhes</a>";
+                // echo "</div>";
+
+                // echo "</div>";
+                // echo "</div>";
             }
             }
              else {
@@ -108,13 +127,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
     <!-- COLUNA DE SUGESTÕES -->
     <aside class="lista-sugestoes">
     <!-- Formulário de envio -->
+    <h2>Erros e Sugestões de Melhorias para correçoes futuras</h2>
     <form method="POST" action="" style="margin-bottom: 20px;">
         <input type="text" name="nome" placeholder="Seu nome" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
         <textarea name="sugestao" placeholder="Digite sua sugestão..." required style="width: 100%; padding: 8px; height: 100px;"></textarea>
         <button type="submit" name="enviarSugestao" style="margin-top: 10px; padding: 8px 12px;">Enviar Sugestão</button>
     </form>
 
-    <h2>Erros, Sugestões e Melhorias</h2>
     <form method="GET" style="margin-bottom: 15px;">
     <label for="filtro">Filtrar por:</label>
     <select name="filtro" id="filtro" onchange="this.form.submit()" style="margin-left: 10px;">

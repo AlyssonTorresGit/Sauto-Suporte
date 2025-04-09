@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titulo = $conn->real_escape_string($_POST['titulo']);
     $descricao = $conn->real_escape_string($_POST['descricao']);
     $resolucao = $conn->real_escape_string($_POST['resolucao']);
-    $resolvido = (int)($_POST['resolvido'] ?? 0); // Captura o valor do select (0 ou 1)
+    $status = (int)($_POST['status'] ?? 0); // Captura o valor do select (0 ou 1)
 
     $imagem = $_FILES['imagem'];
     $pasta = "uploads/";
@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $caminhoImagem = $pasta . $nomeImagem;
 
     if (move_uploaded_file($imagem["tmp_name"], $caminhoImagem)) {
-        $sql = "INSERT INTO uploads (suporte, titulo, descricao, imagem, resolucao, resolvido) 
-                VALUES ('$suporte', '$titulo', '$descricao', '$caminhoImagem', '$resolucao', $resolvido)";
+        $sql = "INSERT INTO uploads (suporte, titulo, descricao, imagem, resolucao, status) 
+                VALUES ('$suporte', '$titulo', '$descricao', '$caminhoImagem', '$resolucao', $status)";
         
         if ($conn->query($sql) === TRUE) { 
             header("Location: lista.php");

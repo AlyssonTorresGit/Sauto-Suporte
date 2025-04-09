@@ -24,23 +24,14 @@
 
       <label for="imagemInput">Imagem</label>
         <input type="file" name="imagem" id="imagemInput" accept="image/*" required>
-      <!-- <label for="resolvido">Status:</label>
-            <select name="resolvido" id="resolvido" required>
-            <option value="0">Não resolvido</option>
-            <option value="1">Resolvido</option>
-            </select> -->
-            <label>Status:</label>
-<div class="status-opcoes">
-  <label>
-    <input type="radio" name="resolvido" value="0" required>
-    Não resolvido
-  </label>
-  <label>
-    <input type="radio" name="resolvido" value="1">
-    Resolvido
-  </label>
-</div>
-
+     
+        <label>Status:</label><br>
+        <label>
+            <input type="radio" name="status" value="0" checked> Não resolvido
+        </label><br>
+        <label>
+            <input type="radio" name="status" value="1"> Resolvido
+        </label>
       <div id="preview-imagem" style="display: none; margin-top: 20px;">
         <p>Prévia da Imagem:</p>
         <img id="preview" src="" alt="Prévia da imagem" style="max-width: 600px; border: 1px solid #000; border-radius: 8px;">

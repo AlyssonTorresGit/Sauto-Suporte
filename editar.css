@@ -92,3 +92,40 @@ body {
     border: 2px solid #ccc;
     margin-top: 10px;
   }
+  .status-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .status-label {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .status-label.resolvido {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .status-label.nao-resolvido {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  /* Esconde os radios para deixar só as tags bonitas */
+  input[type="radio"] {
+    display: none;
+  }
+  
+  /* Adiciona borda/efeito quando está marcado */
+  input[type="radio"]:checked + .status-label {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+    outline: 2px solid #333;
+  }
