@@ -71,7 +71,7 @@ $conn->close();
             <div class="status-container">
                 <label>Status:</label><br>
 
-                <input type="radio" id="resolvido" name="status" value="1" <?php if ($row['status'] == '1') echo 'checked' required; ?>>
+                <input type="radio" id="resolvido" name="status" value="1" <?php if ($row['status'] == '1') echo 'checked'; ?>required>
                 <label class="resolvido" for="resolvido">Resolvido</label>
 
                 <input type="radio" id="nao_resolvido" name="status" value="0" <?php if ($row['status'] == '0') echo 'checked'; ?>>

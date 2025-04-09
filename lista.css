@@ -31,10 +31,9 @@
   .conteudo-esquerda {
     flex: 1;
   }
-  .clique-detalhe{
-    background: none;
-  }
+ 
   .clique-detalhe {
+    background: none;
     text-decoration: none;
     color: inherit;
     flex: 1;
@@ -57,7 +56,11 @@
     color: inherit;
     flex: 1;
   } */
+  /* .miniatura-titulo {
+    z-index: 0;
+  } */
 .miniatura-titulo {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -66,8 +69,7 @@
   border-radius: 8px;
 }
 .miniatura-titulo:hover{
-  transform: scale(1.5);
-  transform: translateX(8px); /* Desliza um pouco para a direita */
+  transform: scale(1.05) translateX(8px); /* Desliza um pouco para a direita */
   background-color: #f0f0f0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
@@ -80,7 +82,7 @@ a.clique-detalhe:hover{
 
 
 /* imagem mais titulo */
-.miniatura-titulo img {
+/* .miniatura-titulo img {
   width: 200px;
   height: 200px;
   border-radius: 8px;
@@ -91,6 +93,36 @@ a.clique-detalhe:hover{
   height: 300px;
   border-radius: 8px;
   object-fit: cover;
+} */
+.miniatura-titulo:hover {
+  transform: translateX(5px);
+}
+.miniatura-titulo img:hover {
+   width: 200px;
+  height: 200px; 
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* Este é o efeito de zoom SUAVE */
+.miniatura-titulo:hover img {
+  transform: scale(1.05); /* só aumenta 5% */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Antes */
+/* .blocoLista img:hover {
+  transform: scale(1.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin: 0px 25px;
+} */
+
+.miniatura-titulo img {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* somente a imagem */
@@ -101,11 +133,11 @@ a.clique-detalhe:hover{
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .blocoLista img:hover {
-    transform: scale(1.5);
+  /* .blocoLista img:hover {
+  
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     margin: 0px 25px;
-  }
+  } */
 
 
 
@@ -154,6 +186,8 @@ a.clique-detalhe:hover{
     background: #2563eb;
   }
   .blocoLista {
+    position: relative;
+    overflow: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
