@@ -77,21 +77,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
             if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
             
-            // echo "<div class='blocoLista'>";
-            // echo "<a href='detalhes.php?id=" . $row['id'] . "' style='text-decoration: none; color: inherit; display: block;'>";
-            // echo "<h3 class='tiltulo-lista'>" . htmlspecialchars($row['titulo']) . "</h3>";
-            // echo "<div class='divImagemView'>";
-            // echo "<img class='imagem img-preview' src='" . $row['imagem'] . "' width='100'>";
-            // echo "</div>";
-            // echo "</a>";
-            // echo "</div>";
-            echo "<div class='blocoLista' onclick=\"window.location.href='detalhes.php?id=" . $row['id'] . "'\">";
-            echo "<img src='" . $row['imagem'] . "' alt='Miniatura'>";
-            echo "<div class='info'>";
-            echo "<h3>" . htmlspecialchars($row['titulo']) . "</h3>";
-            echo "</div>";
-            echo "</div>";
+                echo "<div class='blocoLista'>";
+                 echo "<img src='" . $row['imagem'] . "' alt='Miniatura'>";
+                echo "<div class='info'>";
+                echo "<h3>" . htmlspecialchars($row['titulo']) . "</h3>";
 
+                // Tag de resolvido ou não
+                $status = $row['resolvido'] ? "<span class='tag-resolvido'>Resolvido</span>" : "<span class='tag-pendente'>Não Resolvido</span>";
+
+                echo $status;
+
+                // Botão para resolver (leva ao editar.php)
+                echo "<div class='acoes'>";
+                echo "<a class='btn-resolver' href='editar.php?id=" . $row['id'] . "'>Resolver</a>";
+                echo "</div>";
+
+                echo "</div>";
+                echo "</div>";
             }
             }
              else {

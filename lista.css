@@ -120,6 +120,86 @@
     transform: translateY(-3px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
+
+  .acoes {
+  margin-top: 10px;
+}
+
+.acoes a {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-right: 8px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-detalhes {
+  background-color: #444;
+  color: #fff;
+}
+
+.btn-editar {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-editar:hover {
+  background-color: #0056b3;
+}
+
+.btn-detalhes:hover {
+  background-color: #222;
+}
+.btn-resolver {
+  background-color: #007bff; /* Azul padrão Bootstrap */
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-resolver:hover {
+  background-color: #0056b3; /* Azul mais escuro no hover */
+}
+/* Badge de status */
+.tag-resolvido,
+.tag-pendente {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: white;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.tag-resolvido {
+  background-color: #28a745; /* verde */
+}
+
+.tag-pendente {
+  background-color: orange; /* laranja */
+}
+
+/* Botão "Resolver" sempre azul */
+.btn-resolver {
+  background-color: #007bff; /* azul */
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-resolver:hover {
+  background-color: #0056b3; /* azul escuro no hover */
+}
   
   /* RESPONSIVO */
   @media (max-width: 768px) {
