@@ -10,17 +10,17 @@
   <div class="container">
     <h1>Fazer Upload</h1>
     <form action="upload.php" method="POST" enctype="multipart/form-data">
-      <label for="isuporte">Seu nome (Suporte)</label>
+      <label for="isuporte">Suporte</label>
         <input type="text" id="isuporte" name="suporte" placeholder="Seu nome" required>
 
       <label for="ititulo">Título</label>
         <input type="text" id="ititulo" name="titulo" placeholder="Título" required>
 
       <label for="idesc">Descrição</label>
-        <textarea id="idesc" name="descricao" rows="6" placeholder="Descrição do erro"></textarea>
+        <textarea id="idesc" name="descricao" rows="3" placeholder="Descrição do erro"></textarea>
 
       <label for="iresol">Resolução</label>
-        <textarea id="iresol" name="resolucao" rows="6" placeholder="Como resolver?"></textarea>
+        <textarea id="iresol" name="resolucao" rows="3" placeholder="Como resolver?"></textarea>
 
       <label for="imagemInput">Imagem</label>
         <input type="file" name="imagem" id="imagemInput" accept="image/*" required>

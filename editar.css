@@ -16,10 +16,20 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
-  h2 {
+  h1 {
     text-align: center;
-    color: #444;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    padding-top: 5px ;
+    padding-bottom: 5px;
+    margin-top: 2px;
+    background-color: #0056b3;
+    margin-bottom: 2px;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: white;
+    border-radius: 8px;
+    
   }
   
   form label {
@@ -86,46 +96,31 @@ body {
     filter: brightness(1.1);
   }
   
-  #previewContainer img {
+  div#previewContainer img {
     max-width: 300px;
     border-radius: 10px;
     border: 2px solid #ccc;
     margin-top: 10px;
   }
-  .status-container {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  div.status-container {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
-  
-  .status-label {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-weight: bold;
-    margin-right: 10px;
-    cursor: pointer;
-    transition: 0.3s;
+  div.status-container > label.resolvido, label.nao_resolvido{
+    display: inline;
   }
-  
-  .status-label.resolvido {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+  div.status-container > label.resolvido{
+    color: darkgreen;
   }
-  
-  .status-label.nao-resolvido {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+  div.status-container > label.nao_resolvido{
+    color: darkred;
   }
+
   
-  /* Esconde os radios para deixar só as tags bonitas */
-  input[type="radio"] {
-    display: none;
-  }
-  
-  /* Adiciona borda/efeito quando está marcado */
-  input[type="radio"]:checked + .status-label {
+  /* é interessante mais precisa 
+  Adiciona borda/efeito quando está marcado
+  input[type="radio"]:checked + .resolvido {
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
     outline: 2px solid #333;
-  }
+  } */

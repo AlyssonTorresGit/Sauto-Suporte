@@ -36,9 +36,11 @@ $row = $result->fetch_assoc();
   <link rel="stylesheet" href="detalhes.css">
 </head>
 <body>
+  
   <div class="container">
-    <h1><?= htmlspecialchars($row['titulo']) ?></h1>
-    <p><strong>Suporte:</strong> <?= htmlspecialchars($row['suporte']) ?></p>
+    <h1>Detalhes</h1>
+    <h2><?= htmlspecialchars($row['titulo']) ?></h2>
+    <p><strong>Criado por Suporte:</strong> <?= htmlspecialchars($row['suporte']) ?></p>
 
     <div class="descricao">
       <h3>Descrição do Erro:</h3>

@@ -37,19 +37,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
   <title>Sauto Suporte</title>
   <link rel="stylesheet" href="lista.css">
   <style>
-   
+    header{
+    text-align: center;
+    background-color: #0056b3;
+    border-radius: 8px;
+    padding: 5px 20px;
+    margin: 5px 0px;
+    color: white;
+    }
   </style>
 </head>
 <body>
-
-  <h1 class="pesquisa">Base de Conhecimento - Sauto Suporte</h1>
-  <h2 class="pesquisa">Pesquisar Erros</h2>
-  <form class="lista" method="GET">
-    <input class="campo-pesquisa" type="text" name="query" placeholder="Digite sua pesquisa">
-    <button class="btn-consultar" type="submit">Consultar</button>
-    <a class="btn-inclur" href="upload.html">Incluir
-    </a>
-  </form>
+    
+    <header>
+        <h1 class="pesquisa">Base de Conhecimento - Sauto Suporte</h1>
+        <h2 class="pesquisa">Pesquisar Erros</h2>
+        <form class="lista" method="GET">
+        <input class="campo-pesquisa" type="text" name="query" placeholder="Digite sua pesquisa">
+        <button class="btn-consultar" type="submit">Consultar</button>
+        <a class="btn-inclur" href="upload.html">Incluir
+        </a>
+    </header>
+  
+</form>
 
   <div class="painel-duplo">
     <!-- COLUNA DE ERROS -->
@@ -77,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
             if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
             
-                echo "<div class='blocoLista'>";
+            echo "<div class='blocoLista'>";
 
             echo "<a href='detalhes.php?id=" . $row['id'] . "' class='clique-detalhe'>";
              echo "<div class='miniatura-titulo'>";
@@ -89,30 +99,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
             echo "<div class='acoes-direita'>";
             $status = $row['status'] ? "<span class='tag-resolvido'>Resolvido</span>" : "<span class='tag-pendente'>Não Resolvido</span>";
             echo $status;
-            echo "<a class='btn-resolver' href='editar.php?id=" . $row['id'] . "&resolver=1'>Resolver</a>";
+            
+            if ($row['status'] == 0) {
+                echo "<a class='btn-resolver' href='editar.php?id=" . $row['id'] . "&resolver=1'>Resolver</a>";
+            }
+            
             echo "<a class='btn-detalhes' href='detalhes.php?id=" . $row['id'] . "'>Detalhes</a>";
             echo "</div>";
 
-            echo "</div>"; // .blocoLista
-
-                // echo "<div class='blocoLista'>";
-                //  echo "<img src='" . $row['imagem'] . "' alt='Miniatura'>";
-                // echo "<div class='info'>";
-                // echo "<h3>" . htmlspecialchars($row['titulo']) . "</h3>";
-
-                // // Tag de resolvido ou não
-                // $status = $row['status'] ? "<span class='tag-resolvido'>Resolvido</span>" : "<span class='tag-pendente'>Não Resolvido</span>";
-
-                // echo $status;
-
-                // // Botão para resolver e detalhes (leva ao editar.php detalhes.php)
-                // echo "<div class='acoes'>";
-                // echo "<a class='btn-resolver' href='editar.php?id=" . $row['id'] . "&resolver=1'>Resolver</a>";
-                // echo "<a class='btn-detalhes' href='detalhes.php?id=" . $row['id'] . "'>Detalhes</a>";
-                // echo "</div>";
-
-                // echo "</div>";
-                // echo "</div>";
+            echo "</div>";
             }
             }
              else {

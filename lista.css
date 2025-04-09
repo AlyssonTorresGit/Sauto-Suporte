@@ -26,22 +26,7 @@
   }
   
   /* BLOCO DE CADA ERRO */
-  .blocoLista {
-    display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 12px 20px;
-  margin-bottom: 16px;
-  transition: background 0.3s;
-  gap: 20px;
-  }
   
-  .blocoLista:hover {
-    background: #f9f9f9;
-  }
   
   .conteudo-esquerda {
     flex: 1;
@@ -60,7 +45,6 @@
     max-width: 200px;
     border-radius: 8px;
     display: block;
-    margin-bottom: 8px;
   }
   
   .clique-detalhe h3 {
@@ -68,17 +52,17 @@
     color: inherit;
     flex: 1;
   }
-  .clique-detalhe {
+  /* .clique-detalhe {
     text-decoration: none;
     color: inherit;
     flex: 1;
-  }
+  } */
 .miniatura-titulo {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-  padding: 8px;
+  padding: 3px;
   border-radius: 8px;
 }
 .miniatura-titulo:hover{
@@ -87,14 +71,42 @@
   background-color: #f0f0f0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
+a.clique-detalhe{
+  background: none
+}
+a.clique-detalhe:hover{
+  background-color: #f0f0f0;
+}
 
 
+/* imagem mais titulo */
 .miniatura-titulo img {
-  width: 80px;
-  height: 80px;
+  width: 200px;
+  height: 200px;
   border-radius: 8px;
   object-fit: cover;
 }
+.miniatura-titulo img:hover {
+  width: 300px;
+  height: 300px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* somente a imagem */
+.blocoLista img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .blocoLista img:hover {
+    transform: scale(1.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    margin: 0px 25px;
+  }
+
 
 
 .miniatura-titulo h3 {
@@ -106,12 +118,13 @@
 .acoes-direita .btn-resolver,
 .acoes-direita .btn-detalhes {
   text-decoration: none;
+  text-align: center;
+  margin: 0px;
   padding: 6px 10px;
   border-radius: 6px;
   font-size: 14px;
   color: #fff;
   background: #3b82f6;
-  text-align: center;
   transition: background 0.2s;
 }
 .acoes-direita .btn-resolver:hover,
@@ -141,33 +154,23 @@
     background: #2563eb;
   }
   .blocoLista {
-    display: flex;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 16px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 5px 5px;
   margin-bottom: 16px;
-  border-radius: 8px;
-  transition: box-shadow 0.3s ease;
-  cursor: pointer;
-  gap: 16px;
+  transition: background 0.3s ease;
+  gap: 20px;
   }
   
   .blocoLista:hover {
+    background: #f9f9f9;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
   
-  .blocoLista img {
-    width: 150px;
-    height: 150px;
-    border-radius: 8px;
-    object-fit: cover;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .blocoLista img:hover {
-    transform: scale(1.5);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
   .blocoLista .info {
     flex: 1;
   }
@@ -246,13 +249,14 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   
   .campo-pesquisa {
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
+    width: 80%;
   }
   
   button, a {
@@ -325,6 +329,7 @@
 /* Badge de status */
 .tag-resolvido,
 .tag-pendente {
+  text-align: center;
   padding: 4px 10px;
   border-radius: 12px;
   font-weight: bold;

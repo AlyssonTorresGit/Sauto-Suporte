@@ -55,7 +55,7 @@ $conn->close();
 
 <body>
     <main>
-        <h2>Editar Dados</h2>
+        <h1>Editar Dados</h1>
         <form class="editarDados" action="atualizar.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
@@ -69,13 +69,13 @@ $conn->close();
             <textarea rows="15" name="resolucao"><?php echo $row['resolucao']; ?></textarea><br>
 
             <div class="status-container">
-            <label>Status:</label><br>
+                <label>Status:</label><br>
 
-            <input type="radio" id="resolvido" name="status" value="resolvido" <?php if ($row['status'] === 'resolvido') echo 'checked'; ?>>
-            <label for="resolvido">Resolvido</label>
+                <input type="radio" id="resolvido" name="status" value="1" <?php if ($row['status'] == '1') echo 'checked' required; ?>>
+                <label class="resolvido" for="resolvido">Resolvido</label>
 
-            <input type="radio" id="nao_resolvido" name="status" value="não resolvido" <?php if ($row['status'] === 'não resolvido') echo 'checked'; ?>>
-            <label for="nao_resolvido">Não resolvido</label>
+                <input type="radio" id="nao_resolvido" name="status" value="0" <?php if ($row['status'] == '0') echo 'checked'; ?>>
+                <label class="nao_resolvido" for="nao_resolvido">Não resolvido</label>
 
             </div>
 
@@ -89,7 +89,7 @@ $conn->close();
             <!-- Prévia da nova imagem -->
             <div id="previewContainer" style="display: none; margin-top: 10px;">
                 <p>Prévia da Nova Imagem:</p>
-                <img class="imagem" id="preview" src="" alt="Prévia da nova imagem" style="max-width: 300px; border: 2px solid #000;">
+                <img class="imagem" id="preview" src="" alt="Prévia da nova imagem" style="max-width: 500px; border: 2px solid #000;">
             </div>
 
             <div class="botao-container-salvar-alteracao">
