@@ -87,27 +87,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
             if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
             
-            echo "<div class='blocoLista'>";
+                echo "<div class='blocoLista'>";
 
-            echo "<a href='detalhes.php?id=" . $row['id'] . "' class='clique-detalhe'>";
-             echo "<div class='miniatura-titulo'>";
-            echo "<img src='" . $row['imagem'] . "' alt='Miniatura'>";
-            echo "<h3>" . htmlspecialchars($row['titulo']) . "</h3>";
-            echo "</div>";
-            echo "</a>";
-
-            echo "<div class='acoes-direita'>";
-            $status = $row['status'] ? "<span class='tag-resolvido'>Resolvido</span>" : "<span class='tag-pendente'>Não Resolvido</span>";
-            echo $status;
-            
-            if ($row['status'] == 0) {
-                echo "<a class='btn-resolver' href='editar.php?id=" . $row['id'] . "&resolver=1'>Resolver</a>";
-            }
-            
-            echo "<a class='btn-detalhes' href='detalhes.php?id=" . $row['id'] . "'>Detalhes</a>";
-            echo "</div>";
-
-            echo "</div>";
+                echo "<a href='detalhes.php?id=" . $row['id'] . "' class='clique-detalhe'>";
+                echo "<div class='miniatura-titulo'>";
+                
+                // Verifica se existe imagem, senão usa a padrão
+                $imagem = !empty($row['imagem']) ? 'uploads/' . $row['imagem'] : 'imagens/sem-imagem.jpeg';
+                echo "<img src='" . $imagem . "' alt='Miniatura'>";
+                
+                echo "<h3>" . htmlspecialchars($row['titulo']) . "</h3>";
+                echo "</div>";
+                echo "</a>";
+                
+                echo "<div class='acoes-direita'>";
+                $status = $row['status'] ? "<span class='tag-resolvido'>Resolvido</span>" : "<span class='tag-pendente'>Não Resolvido</span>";
+                echo $status;
+                
+                if ($row['status'] == 0) {
+                    echo "<a class='btn-resolver' href='editar.php?id=" . $row['id'] . "&resolver=1'>Resolver</a>";
+                }
+                
+                echo "<a class='btn-detalhes' href='detalhes.php?id=" . $row['id'] . "'>Detalhes</a>";
+                echo "</div>";
+                
+                echo "</div>";
+                
             }
             }
              else {
