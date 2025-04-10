@@ -17,6 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = (int)($_POST['status'] ?? 0);
 
     $caminhoImagem = ""; // valor padrão se não enviar imagem
+    $nomeImagemcompleto = ""; 
+
 
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] !== 4) {
         // Verifica se não deu erro
@@ -26,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
            
             $extencao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
             $caminhoImagem = $pasta . $nomeImagem. '.'.$extencao;
-
+            $nomeImagemcompleto = $nomeImagem. '.'.$extencao;
 
             if (!move_uploaded_file($_FILES["imagem"]["tmp_name"], $caminhoImagem)) {
                 echo "Erro ao enviar o arquivo.";
@@ -39,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $sql = "INSERT INTO uploads (suporte, titulo, descricao, imagem, resolucao, status) 
-            VALUES ('$suporte', '$titulo', '$descricao', '$nomeImagem.$extencao', '$resolucao', $status)";
+            VALUES ('$suporte', '$titulo', '$descricao', '$nomeImagemcompleto', '$resolucao', $status)";
 
     if ($conn->query($sql) === TRUE) { 
         header("Location: lista.php");

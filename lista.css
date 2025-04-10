@@ -6,7 +6,7 @@
   
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #e8e8ea;
     color: #333;
     padding: 20px;
   }
@@ -51,14 +51,7 @@
     color: inherit;
     flex: 1;
   }
-  /* .clique-detalhe {
-    text-decoration: none;
-    color: inherit;
-    flex: 1;
-  } */
-  /* .miniatura-titulo {
-    z-index: 0;
-  } */
+ 
 .miniatura-titulo {
   position: relative;
   display: flex;
