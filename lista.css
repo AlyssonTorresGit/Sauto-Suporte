@@ -80,20 +80,6 @@ a.clique-detalhe:hover{
   background-color: #f0f0f0;
 }
 
-
-/* imagem mais titulo */
-/* .miniatura-titulo img {
-  width: 200px;
-  height: 200px;
-  border-radius: 8px;
-  object-fit: cover;
-}
-.miniatura-titulo img:hover {
-  width: 300px;
-  height: 300px;
-  border-radius: 8px;
-  object-fit: cover;
-} */
 .miniatura-titulo:hover {
   transform: translateX(5px);
 }
@@ -109,14 +95,6 @@ a.clique-detalhe:hover{
   transform: scale(1.05); /* só aumenta 5% */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
-
-/* Antes */
-/* .blocoLista img:hover {
-  transform: scale(1.5);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  margin: 0px 25px;
-} */
-
 .miniatura-titulo img {
   width: 200px;
   height: 200px;
@@ -133,13 +111,6 @@ a.clique-detalhe:hover{
     object-fit: cover;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  /* .blocoLista img:hover {
-  
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    margin: 0px 25px;
-  } */
-
-
 
 .miniatura-titulo h3 {
   margin: 0;
@@ -216,7 +187,7 @@ a.clique-detalhe:hover{
     padding: 20px;
     border-radius: 12px;
     border: 1px solid #ddd;
-    max-height: 85vh;
+    max-height: 90vh;
     overflow-y: auto;
     min-width: 280px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
@@ -290,7 +261,7 @@ a.clique-detalhe:hover{
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 80%;
+    width: 50%;
   }
   
   button, a {

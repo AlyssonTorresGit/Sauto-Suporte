@@ -46,10 +46,20 @@ $row = $result->fetch_assoc();
       <h3>Descrição do Erro:</h3>
       <p><?= nl2br(htmlspecialchars($row['descricao'])) ?></p>
     </div>
+<?php
+$imagem = $row['imagem'];
+$caminho = "uploads/" . $imagem;
+$caminhoImagem = (empty($imagem) || !file_exists($caminho)) ? "imagens/sem-imagem.jpeg" : $caminho;
+?>
 
-    <div class="imagem-detalhe">
-      <img src="<?= $row['imagem'] ?>" alt="Imagem do erro">
-    </div>
+<div class="imagem-detalhe">
+  <img src="<?= $caminhoImagem ?>" alt="Imagem do erro">
+</div>
+
+
+    <!-- <div class="imagem-detalhe">
+      <img src="uploads/<?= $row['imagem'] ?>" alt="Imagem do erro">
+    </div> -->
 
     <div class="resolucao">
       <h3>Resolução:</h3>
@@ -81,5 +91,6 @@ $row = $result->fetch_assoc();
     }
   });
 </script>
+
 </body>
 </html>

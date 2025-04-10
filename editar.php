@@ -63,7 +63,7 @@ $conn->close();
             <input type="text" name="titulo" value="<?php echo $row['titulo']; ?>" required><br>
 
             <label for="descricao">Descrição:</label>
-            <textarea rows="15" name="descricao" required><?php echo $row['descricao']; ?></textarea><br>
+            <textarea rows="15" name="descricao"><?php echo $row['descricao']; ?></textarea><br>
 
             <label for="resolucao">Resolução:</label>
             <textarea rows="15" name="resolucao"><?php echo $row['resolucao']; ?></textarea><br>

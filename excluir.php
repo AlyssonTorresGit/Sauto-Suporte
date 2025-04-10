@@ -10,12 +10,11 @@ if ($conn->connect_error) {
     die("Erro na conexão: " . $conn->connect_error);
 }
 
-// Verifica se os dados foram recebidos corretamente
 if (isset($_POST['id']) && isset($_POST['imagem'])) {
     $id = $_POST['id'];
     $imagem = $_POST['imagem'];
 
-    // Buscar o nome da imagem no banco de dados
+    // Buscar o nome da imagem no banco (garantia extra)
     $sql = "SELECT imagem FROM uploads WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
@@ -24,45 +23,30 @@ if (isset($_POST['id']) && isset($_POST['imagem'])) {
     $stmt->fetch();
     $stmt->close();
 
-    if ($imagem) {
-        // Definir o caminho da pasta de uploads dentro do htdocs
-        $caminhoArquivo = __DIR__ .'/'. $imagem;
-        
+    // Se houver imagem e ela existir fisicamente, exclui
+    if (!empty($imagem)) {
+        $caminhoArquivo = __DIR__ . '/uploads/' . $imagem;
 
-        // Verifica se o arquivo existe e tenta excluir
         if (file_exists($caminhoArquivo)) {
-            if (unlink($caminhoArquivo)) {
-                echo "Arquivo excluído com sucesso!<br>";
-            } else {
+            if (!unlink($caminhoArquivo)) {
                 echo "Erro ao excluir o arquivo.<br>";
             }
-        } else {
-            echo "Arquivo não encontrado.<br>";
         }
+    }
 
-    // // Caminho completo da imagem
-    
-    // $caminhoArquivo = __DIR__ . "/uploads/".$imagem;
-
-    // // Verifica se o arquivo existe e o exclui
-    // if (file_exists($caminhoArquivo)) {
-    //     unlink($caminhoArquivo);
-     //}
-
-    // Deletar os dados do banco de dados
+    // Agora sim: exclui o registro do banco independentemente de ter imagem ou não
     $sql = "DELETE FROM uploads WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        // Redireciona para a lista após a exclusão
         header("Location: lista.php");
         exit();
     } else {
         echo "Erro ao excluir os dados.";
     }
 
-    $stmt->close();}
+    $stmt->close();
 } else {
     echo "Dados inválidos.";
 }
