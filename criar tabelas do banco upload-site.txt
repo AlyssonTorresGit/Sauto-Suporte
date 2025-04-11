@@ -1,0 +1,22 @@
+cria o banco de dados primeiro
+
+-- Criar o banco de dados
+CREATE DATABASE IF NOT EXISTS sistema_erros
+DEFAULT CHARACTER SET utf8mb4
+DEFAULT COLLATE utf8mb4_general_ci;
+
+-- Usar o banco de dados
+USE sistema_erros;
+
+-- Criar tabela "registros"
+CREATE TABLE IF NOT EXISTS registros (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo ENUM('Erro', 'Sugestão', 'Melhoria') NOT NULL,
+    titulo VARCHAR(255) NOT NULL,
+    suporte VARCHAR(255),
+    descricao TEXT,
+    imagem VARCHAR(255),
+    status ENUM('Pendente', 'Resolvido') DEFAULT 'Pendente',
+    observacao TEXT,
+    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
