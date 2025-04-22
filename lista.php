@@ -1,9 +1,11 @@
 <?php
 // 🔧 CONFIGURAÇÃO DO BANCO
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "upload_site";
+// $host = "localhost";
+// $user = "root";
+// $pass = "";
+// $db = "upload_site";
+
+require 'includes/conexao.php';
 
 // 📩 Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
