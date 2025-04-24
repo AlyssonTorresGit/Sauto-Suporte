@@ -1,5 +1,5 @@
 <?php
-// 🔧 CONFIGURAÇÃO DO BANCO local pelo xampp
+// CONFIGURAÇÃO DO BANCO local pelo xampp
 // $host = "localhost";
 // $user = "root";
 // $pass = "";
@@ -11,7 +11,7 @@
  $pass = "KtfE8K8gYWz";
  $db = "if0_38826779_meu_site";
 
-// 📩 Verifica se o formulário foi enviado
+// Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
     $nome = $_POST['nome'] ?? 'Anônimo';
     $sugestao = $_POST['sugestao'] ?? '';
@@ -72,16 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
     <div class="coluna-erros">
          <div id="resultados">
             <?php
-            $host = "localhost";
-            $user = "root";
-            $pass = "";
-            $db = "upload_site";
-
-            $conn = new mysqli($host, $user, $pass, $db);
-            if ($conn->connect_error) {
-            die("Erro na conexão: " . $conn->connect_error);
-            }
-
             $query = $_GET['query'] ?? null;
             if (isset($query)) {
             $sql = "SELECT * FROM uploads WHERE titulo LIKE '%$query%' OR descricao LIKE '%$query%' ORDER BY id DESC";
