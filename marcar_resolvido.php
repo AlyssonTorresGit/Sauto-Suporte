@@ -1,8 +1,9 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "upload_site";
+ //CONFIGURAÇÃO DO BANCO
+ $host = "sql204.infinityfree.com";
+ $user = "if0_38826779";
+ $pass = "if0_38826779";
+ $db = "if0_38826779_meu_site";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = $_POST['id'];

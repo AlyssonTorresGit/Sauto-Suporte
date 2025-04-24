@@ -1,11 +1,15 @@
 <?php
-// 🔧 CONFIGURAÇÃO DO BANCO
+// 🔧 CONFIGURAÇÃO DO BANCO local pelo xampp
 // $host = "localhost";
 // $user = "root";
 // $pass = "";
 // $db = "upload_site";
 
-require 'includes/conexao.php';
+ //CONFIGURAÇÃO DO BANCO
+ $host = "sql204.infinityfree.com";
+ $user = "if0_38826779";
+ $pass = "if0_38826779";
+ $db = "if0_38826779_meu_site";
 
 // 📩 Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
