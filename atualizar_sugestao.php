@@ -2,7 +2,7 @@
  //CONFIGURAÇÃO DO BANCO
  $host = "sql204.infinityfree.com";
  $user = "if0_38826779";
- $pass = "if0_38826779";
+ $pass = "KtfE8K8gYWz";
  $db = "if0_38826779_meu_site";
 
 $conn = new mysqli($host, $user, $pass, $db);
