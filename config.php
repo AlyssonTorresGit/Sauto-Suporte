@@ -6,10 +6,10 @@
 // $db   = "if0_38826779_meu_site";
 
 
-// $host = "localhost";
-// $user = "root";
-// $pass = "";
-// $db = "upload_site";
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "upload_site";
 
 //Conexão com o MySQL
 $conn = new mysqli($host, $user, $pass, $db);
