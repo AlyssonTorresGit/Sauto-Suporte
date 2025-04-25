@@ -1,6 +1,6 @@
 <?php
 // Conexão com banco
-//  //CONFIGURAÇÃO DO BANCO
+ //CONFIGURAÇÃO DO BANCO
 //  $host = "sql204.infinityfree.com";
 //  $user = "if0_38826779";
 //  $pass = "KtfE8K8gYWz";
