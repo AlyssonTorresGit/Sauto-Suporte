@@ -11,8 +11,6 @@
 // $pass = "";
 // $db = "upload_site";
 
-require_once 'config.php';
-
 //Conexão com o MySQL
 $conn = new mysqli($host, $user, $pass, $db);
 
