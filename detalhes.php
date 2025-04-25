@@ -1,10 +1,12 @@
 <?php
 // Conexão com banco
- //CONFIGURAÇÃO DO BANCO
- $host = "sql204.infinityfree.com";
- $user = "if0_38826779";
- $pass = "KtfE8K8gYWz";
- $db = "if0_38826779_meu_site";
+//  //CONFIGURAÇÃO DO BANCO
+//  $host = "sql204.infinityfree.com";
+//  $user = "if0_38826779";
+//  $pass = "KtfE8K8gYWz";
+//  $db = "if0_38826779_meu_site";
+
+require_once 'config.php';
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
@@ -34,7 +36,7 @@ $row = $result->fetch_assoc();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Detalhes do Erro</title>
-  <link rel="stylesheet" href="detalhes.css">
+  <link rel="stylesheet" href="estilos/detalhes.css">
 </head>
 <body>
   

@@ -1,10 +1,12 @@
 <?php
 // Conectar ao banco de dados
  //CONFIGURAÇÃO DO BANCO
- $host = "sql204.infinityfree.com";
- $user = "if0_38826779";
- $pass = "KtfE8K8gYWz";
- $db = "if0_38826779_meu_site";
+//  $host = "sql204.infinityfree.com";
+//  $user = "if0_38826779";
+//  $pass = "KtfE8K8gYWz";
+//  $db = "if0_38826779_meu_site";
+
+require_once 'config.php';
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
@@ -51,7 +53,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Item</title>
-    <link rel="stylesheet" href="editar.css">
+    <link rel="stylesheet" href="estilos/editar.css">
 </head>
 
 <body>

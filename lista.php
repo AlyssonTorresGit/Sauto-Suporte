@@ -5,11 +5,13 @@
 // $pass = "";
 // $db = "upload_site";
 
- //CONFIGURAÇÃO DO BANCO
- $host = "sql204.infinityfree.com";
- $user = "if0_38826779";
- $pass = "KtfE8K8gYWz";
- $db = "if0_38826779_meu_site";
+//  //CONFIGURAÇÃO DO BANCO
+//  $host = "sql204.infinityfree.com";
+//  $user = "if0_38826779";
+//  $pass = "KtfE8K8gYWz";
+//  $db = "if0_38826779_meu_site";
+
+require_once 'config.php';
 
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
@@ -41,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sauto Suporte</title>
-  <link rel="stylesheet" href="lista.css">
+  <link rel="stylesheet" href="estilos/lista.css">
   <style>
     header{
     text-align: center;
