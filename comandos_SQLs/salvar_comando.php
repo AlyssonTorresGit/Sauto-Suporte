@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require '../config.php';
 
 if (isset($_POST['titulo']) && isset($_POST['suporte'])) {
     $titulo = trim($_POST['titulo']);
