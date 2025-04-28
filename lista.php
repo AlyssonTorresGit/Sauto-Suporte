@@ -86,6 +86,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
         <input class="campo-pesquisa" type="text" name="query" placeholder="Digite sua pesquisa">
         <button class="btn-consultar" type="submit">Consultar</button>
         <a class="btn-inclur" href="upload.html">Incluir</a>
+      <nav class="menu-navegacao">
+        <ul>
+          <li><a href="listar.php">Lista</a></li>
+          <li><a href="lista_comandos.php">Comando SQLs</a></li>
+          <li><a href="importar_xml.php">Importar XMLs</a></li>
+          <li><a href="tutoriais.php">Tutoriais</a></li>
+          <li><a href="novidades.php">Novidades</a></li>
+          <li><a href="#">sugestoes</a></li>
+        </ul>
+      </nav>
     </form>
 </header>
 

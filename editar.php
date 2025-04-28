@@ -55,29 +55,27 @@ $conn->close();
             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
             <label for="titulo">Título:</label>
-            <input type="text" name="titulo" value="<?php echo htmlspecialchars($row['titulo']); ?>" required><br>
+                <input type="text" name="titulo" value="<?php echo htmlspecialchars($row['titulo']); ?>" required><br>
 
             <label for="descricao">Descrição:</label>
-            <textarea rows="15" name="descricao"><?php echo htmlspecialchars($row['descricao']); ?></textarea><br>
+                <textarea rows="15" name="descricao"><?php echo htmlspecialchars($row['descricao']); ?></textarea><br>
 
             <label for="resolucao">Resolução:</label>
-            <textarea rows="15" name="resolucao"><?php echo htmlspecialchars($row['resolucao']); ?></textarea><br>
+                <textarea rows="15" name="resolucao"><?php echo htmlspecialchars($row['resolucao']); ?></textarea><br>
 
             <div class="status-container">
                 <label>Status:</label><br>
-
-                <input type="radio" id="resolvido" name="status" value="1" <?php if ($row['status'] == '1') echo 'checked'; ?>>
+                    <input type="radio" id="resolvido" name="status" value="1" <?php if ($row['status'] == '1') echo 'checked'; ?>>
                 <label class="resolvido" for="resolvido">Resolvido</label>
-
-                <input type="radio" id="nao_resolvido" name="status" value="0" <?php if ($row['status'] == '0') echo 'checked'; ?>>
+                    <input type="radio" id="nao_resolvido" name="status" value="0" <?php if ($row['status'] == '0') echo 'checked'; ?>>
                 <label class="nao_resolvido" for="nao_resolvido">Não resolvido</label>
             </div>
 
             <label>Imagem Atual:</label><br>
-            <img class="imagem" id="imagemAtual" src="<?php echo $row['imagem']; ?>" width="200"><br>
+                <img class="imagem" id="imagemAtual" src="<?php echo $row['imagem']; ?>" width="200"><br>
 
             <label for="nova_imagem">Nova Imagem (opcional):</label>
-            <input type="file" name="nova_imagem" accept="image/*" id="novaImagemInput"><br>
+                <input type="file" name="nova_imagem" accept="image/*" id="novaImagemInput"><br>
 
             <div id="previewContainer" style="display: none; margin-top: 10px;">
                 <p>Prévia da Nova Imagem:</p>
@@ -91,7 +89,7 @@ $conn->close();
                     function confirmarCancelar() {
                     return confirm("Tem certeza que deseja cancelar as alterações?");
                  }
-</script>
+                </script>
             </div>    
         </form>
     </main>

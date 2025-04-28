@@ -22,6 +22,7 @@ try {
 }
 
 // Variáveis globais
+// $base_url = "http://alyssontorres.42web.io/";
 $base_url = "http://localhost/Sauto-Suporte/";
 $versao_sistema = "1.0";
 
