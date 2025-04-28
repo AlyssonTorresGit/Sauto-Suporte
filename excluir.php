@@ -1,56 +1,44 @@
 <?php
 // Conectar ao banco de dados
- //CONFIGURAÇÃO DO BANCO
- $host = "sql204.infinityfree.com";
- $user = "if0_38826779";
- $pass = "KtfE8K8gYWz";
- $db = "if0_38826779_meu_site";
-
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
-}
+require_once 'config.php'; // faltava ponto e vírgula aqui!
 
 if (isset($_POST['id']) && isset($_POST['imagem'])) {
     $id = $_POST['id'];
     $imagem = $_POST['imagem'];
 
-    // Buscar o nome da imagem no banco (garantia extra)
-    $sql = "SELECT imagem FROM uploads WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $stmt->bind_result($imagem);
-    $stmt->fetch();
-    $stmt->close();
+    try {
+        // Primeiro: buscar nome da imagem pelo ID (garantia extra)
+        $stmt = $conn->prepare("SELECT imagem FROM uploads WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Se houver imagem e ela existir fisicamente, exclui
-    if (!empty($imagem)) {
-        $caminhoArquivo = __DIR__ . '/uploads/' . $imagem;
+        if ($row && !empty($row['imagem'])) {
+            $caminhoArquivo = __DIR__ . '/uploads/' . $row['imagem'];
 
-        if (file_exists($caminhoArquivo)) {
-            if (!unlink($caminhoArquivo)) {
-                echo "Erro ao excluir o arquivo.<br>";
+            if (file_exists($caminhoArquivo)) {
+                if (!unlink($caminhoArquivo)) {
+                    echo "Erro ao excluir o arquivo.<br>";
+                }
             }
         }
+
+        // Agora sim: excluir o registro no banco
+        $stmt = $conn->prepare("DELETE FROM uploads WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            header("Location: lista.php");
+            exit();
+        } else {
+            echo "Erro ao excluir os dados.";
+        }
+
+    } catch (PDOException $e) {
+        echo "Erro: " . $e->getMessage();
     }
 
-    // Agora sim: exclui o registro do banco independentemente de ter imagem ou não
-    $sql = "DELETE FROM uploads WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id);
-
-    if ($stmt->execute()) {
-        header("Location: lista.php");
-        exit();
-    } else {
-        echo "Erro ao excluir os dados.";
-    }
-
-    $stmt->close();
 } else {
     echo "Dados inválidos.";
 }
-
-$conn->close();
 ?>

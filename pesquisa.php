@@ -1,14 +1,16 @@
 <?php
  //CONFIGURAÇÃO DO BANCO
- $host = "sql204.infinityfree.com";
- $user = "if0_38826779";
- $pass = "KtfE8K8gYWz";
- $db = "if0_38826779_meu_site";
+//  $host = "sql204.infinityfree.com";
+//  $user = "if0_38826779";
+//  $pass = "KtfE8K8gYWz";
+//  $db = "if0_38826779_meu_site";
 
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
-}
+// $conn = new mysqli($host, $user, $pass, $db);
+// if ($conn->connect_error) {
+//     die("Erro na conexão: " . $conn->connect_error);
+// }
+
+require_once 'config.php'
 
 $query = $_GET['query'];
 $sql = "SELECT * FROM uploads WHERE titulo LIKE '%$query%' OR descricao LIKE '%$query%'";

@@ -1,24 +1,19 @@
 <?php
- //CONFIGURAÇÃO DO BANCO
- $host = "sql204.infinityfree.com";
- $user = "if0_38826779";
- $pass = "KtfE8K8gYWz";
- $db = "if0_38826779_meu_site";
+// CONFIGURAÇÃO DO BANCO
+require_once 'config.php';
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
     die("Erro na conexão: " . $conn->connect_error);
 }
 
-if (isset($_POST['id'], $_POST['titulo'], $_POST['descricao'], $_POST['status'])) {
+// Agora valida apenas o que é realmente obrigatório
+if (!empty($_POST['id']) && !empty($_POST['titulo']) && isset($_POST['status'])) {
     $id = $_POST['id'];
     $titulo = $_POST['titulo'];
-    $descricao = $_POST['descricao'];
-    $resolucao = $_POST['resolucao'] ?? '';
+    $descricao = $_POST['descricao'] ?? ''; // opcional
+    $resolucao = $_POST['resolucao'] ?? ''; // opcional
     $status = $_POST['status'];
-
-    // Debug: Remover depois
-    // echo "Status recebido: $status";
 
     if (isset($_FILES['nova_imagem']) && $_FILES['nova_imagem']['error'] === 0) {
         $nomeUnico = uniqid() . "_" . basename($_FILES['nova_imagem']['name']);
@@ -43,7 +38,10 @@ if (isset($_POST['id'], $_POST['titulo'], $_POST['descricao'], $_POST['status'])
 
     $stmt->close();
 } else {
-    echo "Dados inválidos.";
+    echo "<script>
+        alert('Por favor, preencha o Título e selecione o Status antes de salvar.');
+        window.history.back();
+    </script>";
 }
 
 $conn->close();

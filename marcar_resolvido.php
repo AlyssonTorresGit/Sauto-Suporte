@@ -1,9 +1,5 @@
 <?php
- //CONFIGURAÇÃO DO BANCO
- $host = "sql204.infinityfree.com";
- $user = "if0_38826779";
- $pass = "KtfE8K8gYWz";
- $db = "if0_38826779_meu_site";
+require_once 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = $_POST['id'];

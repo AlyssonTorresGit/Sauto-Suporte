@@ -1,37 +1,18 @@
 <?php
-// CONFIGURAÇÃO DO BANCO local pelo xampp
-// $host = "localhost";
-// $user = "root";
-// $pass = "";
-// $db = "upload_site";
-
-//  //CONFIGURAÇÃO DO BANCO
-//  $host = "sql204.infinityfree.com";
-//  $user = "if0_38826779";
-//  $pass = "KtfE8K8gYWz";
-//  $db = "if0_38826779_meu_site";
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 require_once 'config.php';
 
-// Verifica se o formulário foi enviado
+// Inserção de sugestões
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
     $nome = $_POST['nome'] ?? 'Anônimo';
     $sugestao = $_POST['sugestao'] ?? '';
 
     if (!empty($sugestao)) {
-        $conn = new mysqli($host, $user, $pass, $db);
-        if ($conn->connect_error) {
-            die("Erro na conexão: " . $conn->connect_error);
-        }
+        $stmt = $conn->prepare("INSERT INTO sugestoes (nome, sugestao, data_envio) VALUES (?, ?, NOW())");
+        $stmt->execute([$nome, $sugestao]);
 
-        $nome = $conn->real_escape_string($nome);
-        $sugestao = $conn->real_escape_string($sugestao);
-
-        $conn->query("INSERT INTO sugestoes (nome, sugestao, data_envio) VALUES ('$nome', '$sugestao', NOW())");
-
-        $conn->close();
-
-        // Evita reenvio ao atualizar
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
@@ -46,86 +27,115 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
   <link rel="stylesheet" href="estilos/lista.css">
   <style>
     header{
-    text-align: center;
-    background-color: #0056b3;
-    border-radius: 8px;
-    padding: 5px 20px;
-    margin: 5px 0px;
-    color: white;
+      text-align: center;
+      background-color: #0056b3;
+      border-radius: 8px;
+      padding: 5px 20px;
+      margin: 5px 0px;
+      color: white;
     }
+    .menu-navegacao {
+  background-color: #007bff;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.menu-navegacao ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 10px;
+}
+
+.menu-navegacao li {
+  margin: 0 15px;
+}
+
+.menu-navegacao a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.menu-navegacao a:hover {
+  background-color: #0056b3;
+}
+
   </style>
 </head>
 <body>
+<nav class="menu-navegacao">
+  <ul>
+    <li><a href="listar.php">Lista</a></li>
+    <li><a href="lista_comandos.php">Comando SQLs</a></li>
+    <li><a href="importar_xml.php">Importar XMLs</a></li>
+    <li><a href="tutoriais.php">Tutoriais</a></li>
+    <li><a href="novidades.php">Novidades</a></li>
+    <li><a href="#">sugestoes</a></li>
+
+  </ul>
+</nav>
     
-    <header>
-        <h1 class="pesquisa">Base de Conhecimento - Sauto Suporte</h1>
-        <!-- <h2 class="pesquisa">Pesquisar Erros</h2> -->
-        <form class="lista" method="GET">
+<header>
+    <h1 class="pesquisa">Base de Conhecimento - Sauto Suporte</h1>
+    <form class="lista" method="GET">
         <input class="campo-pesquisa" type="text" name="query" placeholder="Digite sua pesquisa">
         <button class="btn-consultar" type="submit">Consultar</button>
-        <a class="btn-inclur" href="upload.html">Incluir
-        </a>
-    </header>
-  
-</form>
+        <a class="btn-inclur" href="upload.html">Incluir</a>
+    </form>
+</header>
 
-  <div class="painel-duplo">
-    <!-- COLUNA DE ERROS -->
-    <div class="coluna-erros">
-         <div id="resultados">
-            <?php
-            $query = $_GET['query'] ?? null;
-            if (isset($query)) {
-            $sql = "SELECT * FROM uploads WHERE titulo LIKE '%$query%' OR descricao LIKE '%$query%' ORDER BY id DESC";
-            } else {
-            $sql = "SELECT * FROM uploads ORDER BY id DESC";
-            }
-            $result = $conn->query($sql);
+<div class="painel-duplo">
+  <!-- COLUNA DE ERROS -->
+  <div class="coluna-erros">
+    <div id="resultados">
+      <?php
+      $query = $_GET['query'] ?? null;
+      if (isset($query)) {
+          $sql = "SELECT * FROM uploads WHERE titulo LIKE :query OR descricao LIKE :query ORDER BY id DESC";
+          $stmt = $conn->prepare($sql);
+          $stmt->execute(['query' => "%$query%"]);
+      } else {
+          $sql = "SELECT * FROM uploads ORDER BY id DESC";
+          $stmt = $conn->query($sql);
+      }
 
-            if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-            
-                echo "<div class='blocoLista'>";
+      if ($stmt->rowCount() > 0) {
+          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              echo "<div class='blocoLista'>";
+              echo "<a href='detalhes.php?id=" . $row['id'] . "' class='clique-detalhe'>";
+              echo "<div class='miniatura-titulo'>";
+              $imagem = !empty($row['imagem']) ? 'uploads/' . $row['imagem'] : 'imagens/sem-imagem.jpeg';
+              echo "<img src='" . $imagem . "' alt='Miniatura'>";
+              echo "<h3>" . htmlspecialchars($row['titulo']) . "</h3>";
+              echo "</div></a>";
 
-                echo "<a href='detalhes.php?id=" . $row['id'] . "' class='clique-detalhe'>";
-                echo "<div class='miniatura-titulo'>";
-                
-                // Verifica se existe imagem, senão usa a padrão
-                $imagem = !empty($row['imagem']) ? 'uploads/' . $row['imagem'] : 'imagens/sem-imagem.jpeg';
-                echo "<img src='" . $imagem . "' alt='Miniatura'>";
-                
-                echo "<h3>" . htmlspecialchars($row['titulo']) . "</h3>";
-                echo "</div>";
-                echo "</a>";
-                
-                echo "<div class='acoes-direita'>";
-                $status = $row['status'] ? "<span class='tag-resolvido'>Resolvido</span>" : "<span class='tag-pendente'>Não Resolvido</span>";
-                echo $status;
-                
-                if ($row['status'] == 0) {
-                    echo "<a class='btn-resolver' href='editar.php?id=" . $row['id'] . "&resolver=1'>Resolver</a>";
-                }
-                
-                echo "<a class='btn-detalhes' href='detalhes.php?id=" . $row['id'] . "'>Detalhes</a>";
-                echo "</div>";
-                
-                echo "</div>";
-                
-            }
-            }
-             else {
-            echo "Nenhum resultado encontrado.";
-            }
+              echo "<div class='acoes-direita'>";
+              $status = $row['status'] ? "<span class='tag-resolvido'>Resolvido</span>" : "<span class='tag-pendente'>Não Resolvido</span>";
+              echo $status;
 
-            $conn->close();
-            ?>
-      </div>
+              if ($row['status'] == 0) {
+                  echo "<a class='btn-resolver' href='editar.php?id=" . $row['id'] . "&resolver=1'>Resolver</a>";
+              }
+
+              echo "<a class='btn-detalhes' href='detalhes.php?id=" . $row['id'] . "'>Detalhes</a>";
+              echo "</div>";
+              echo "</div>";
+          }
+      } else {
+          echo "Nenhum resultado encontrado.";
+      }
+      ?>
     </div>
+  </div>
 
-    <!-- COLUNA DE SUGESTÕES -->
-    <aside class="lista-sugestoes">
-    <!-- Formulário de envio -->
-    <h2>Erros e Sugestões de Melhorias para correçoes futuras</h2>
+  <!-- -------------------------------COLUNA DE SUGESTÕES------------------- -->
+  <aside class="lista-sugestoes">
+    <h2>Erros e Sugestões de Melhorias para correções futuras</h2>
     <form method="POST" action="" style="margin-bottom: 20px;">
         <input type="text" name="nome" placeholder="Seu nome" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
         <textarea name="sugestao" placeholder="Digite sua sugestão..." required style="width: 100%; padding: 8px; height: 100px;"></textarea>
@@ -133,23 +143,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
     </form>
 
     <form method="GET" style="margin-bottom: 15px;">
-    <label for="filtro">Filtrar por:</label>
-    <select name="filtro" id="filtro" onchange="this.form.submit()" style="margin-left: 10px;">
-        <option value="todas" <?= ($_GET['filtro'] ?? '') === 'todas' ? 'selected' : '' ?>>Todas</option>
-        <option value="pendentes" <?= ($_GET['filtro'] ?? '') === 'pendentes' ? 'selected' : '' ?>>Pendentes</option>
-        <option value="resolvidas" <?= ($_GET['filtro'] ?? '') === 'resolvidas' ? 'selected' : '' ?>>Resolvidas</option>
-    </select>
-</form>
-
+      <label for="filtro">Filtrar por:</label>
+      <select name="filtro" id="filtro" onchange="this.form.submit()" style="margin-left: 10px;">        
+          <option value="todas" <?= ($_GET['filtro'] ?? '') === 'todas' ? 'selected' : '' ?>>Todas</option>
+          <option value="pendentes" <?= ($_GET['filtro'] ?? '') === 'pendentes' ? 'selected' : '' ?>>Pendentes</option>
+          <option value="resolvidas" <?= ($_GET['filtro'] ?? '') === 'resolvidas' ? 'selected' : '' ?>>Resolvidas</option>
+      </select>
+    </form>
 
     <?php
-    $conn = new mysqli($host, $user, $pass, $db);
-    if ($conn->connect_error) {
-        die("Erro na conexão: " . $conn->connect_error);
-    }
-    
     $filtro = $_GET['filtro'] ?? 'todas';
-    
+
     if ($filtro === 'pendentes') {
         $sqlSugestoes = "SELECT * FROM sugestoes WHERE resolvido = 0 ORDER BY data_envio DESC";
         echo "<h3>Sugestões Pendentes</h3>";
@@ -160,18 +164,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
         $sqlSugestoes = "SELECT * FROM sugestoes ORDER BY data_envio DESC";
         echo "<h3>Todas as Sugestões</h3>";
     }
-    
-    $resultSugestoes = $conn->query($sqlSugestoes);
-    
-    if ($resultSugestoes->num_rows > 0) {
-        while ($sug = $resultSugestoes->fetch_assoc()) {
+
+    $stmtSugestoes = $conn->query($sqlSugestoes);
+
+    if ($stmtSugestoes->rowCount() > 0) {
+        while ($sug = $stmtSugestoes->fetch(PDO::FETCH_ASSOC)) {
             $classe = $sug['resolvido'] ? 'resolvida' : 'pendente';
             echo "<div class='sugestao-box $classe'>";
             echo "<strong>" . htmlspecialchars($sug['nome']) . ":</strong> ";
             echo "<p>" . nl2br(htmlspecialchars($sug['sugestao'])) . "</p>";
             echo "<small>Enviado em: " . $sug['data_envio'] . "</small>";
-    
-            // Formulário de atualização
+
             if (!$sug['resolvido']) {
                 echo "<form method='POST' action='marcar_resolvido.php' style='margin-top:10px;'>";
                 echo "<input type='hidden' name='id' value='" . $sug['id'] . "'>";
@@ -179,7 +182,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
                         <input type='checkbox' name='resolvido' value='1'>
                         Marcar como Resolvido
                       </label>";
-                echo "<textarea name='observacao' placeholder='Observação do admin...' style='width: 100%; margin-top: 5px;'>" . htmlspecialchars($sug['observacao']) . "</textarea>";
+                // echo "<textarea name='observacao' placeholder='Observação do admin...' style='width: 100%; margin-top: 5px;'>" . htmlspecialchars($sug['observacao']) . "</textarea>";
+                echo "<textarea name='observacao' placeholder='Observação do admin...' style='width: 100%; margin-top: 5px;'>" . htmlspecialchars($sug['observacao'] ?? '') . "</textarea>";
                 echo "<button type='submit' style='margin-top: 5px;'>Atualizar</button>";
                 echo "</form>";
             } else {
@@ -188,23 +192,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
                     echo "<p><strong>Obs:</strong> " . htmlspecialchars($sug['observacao']) . "</p>";
                 }
             }
-    
+
             echo "</div>";
         }
     } else {
         echo "<p>Nenhuma sugestão encontrada para este filtro.</p>";
     }
-    
-    $conn->close();
-    ?>
-</aside>
-  </div>
 
-  <script>
-        function confirmarExclusao() {
-        return confirm("Tem certeza que deseja excluir este item?");
-        }
-  </script>
+    ?>
+  </aside>
+</div>
+
+<script>
+  function confirmarExclusao() {
+    return confirm("Tem certeza que deseja excluir este item?");
+  }
+</script>
 
 </body>
 </html>

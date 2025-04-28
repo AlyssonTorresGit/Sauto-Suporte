@@ -1,16 +1,10 @@
 <?php
 // Conexão com banco
- //CONFIGURAÇÃO DO BANCO
-//  $host = "sql204.infinityfree.com";
-//  $user = "if0_38826779";
-//  $pass = "KtfE8K8gYWz";
-//  $db = "if0_38826779_meu_site";
-
 require_once 'config.php';
 
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
+ $conn = new mysqli($host, $user, $pass, $db);
+ if ($conn->connect_error) {
+     die("Erro na conexão: " . $conn->connect_error);
 }
 
 $id = $_GET['id'] ?? null;
@@ -19,6 +13,16 @@ if (!$id) {
     echo "ID não especificado.";
     exit;
 }
+
+// $sql = "SELECT * FROM uploads WHERE id = :id";
+// $stmt = $conn->prepare($sql);
+// $stmt->execute(['id' => $id]);
+// $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// if (!$row) {
+//     echo "Erro não encontrado.";
+//     exit;
+// }
 
 $sql = "SELECT * FROM uploads WHERE id = $id";
 $result = $conn->query($sql);
@@ -29,6 +33,7 @@ if ($result->num_rows === 0) {
 }
 
 $row = $result->fetch_assoc();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
