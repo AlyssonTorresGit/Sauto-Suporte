@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
       color: white;
     }
     .menu-navegacao {
-  background-color: #007bff;
+  background-color: #0056b3;
   margin: 10px 0;
   border-radius: 8px;
 }
@@ -64,7 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
 .menu-navegacao a:hover {
   background-color: #0056b3;
 }
-
   </style>
 </head>
 <body>    
@@ -74,7 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
         <input class="campo-pesquisa" type="text" name="query" placeholder="Digite sua pesquisa">
         <button class="btn-consultar" type="submit">Consultar</button>
         <a class="btn-inclur" href="upload.html">Incluir</a>
-      
     </form>
 </header>
 <nav class="menu-navegacao">
