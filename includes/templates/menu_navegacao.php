@@ -11,7 +11,7 @@
             <ul>
             <li><a href="lista.php">Lista</a></li>
             <li><a href="lista_comandos.php">Comando SQLs</a></li>
-            <li><a href="importar_xml.php">Importar XMLs</a></li>
+            <li><a href="/importar-xml">Importar XMLs</a></li>
             <li><a href="tutoriais.php">Tutoriais</a></li>
             <li><a href="novidades.php">Novidades</a></li>
             <li><a href="#">sugestoes</a></li>
