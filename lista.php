@@ -34,7 +34,7 @@ header{
   margin: 5px 0px;
   color: white;
 }
-/* .menu-navegacao {
+.menu-navegacao {
   background-color: #0056b3;
   margin: 10px 0px;
   border-radius: 8px;
@@ -64,7 +64,7 @@ header{
 
 .menu-navegacao a:hover {
   background-color:rgb(1, 62, 128); */
-/* } */
+/* }
   </style>
 </head>
 <body>    
