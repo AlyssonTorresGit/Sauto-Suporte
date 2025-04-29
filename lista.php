@@ -50,10 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
 
 .menu-navegacao li {
   margin: 0 15px;
-  color: red;
 }
 
 .menu-navegacao a {
+  background-color: #0056b3;
   color: white;
   text-decoration: none;
   font-weight: bold;
