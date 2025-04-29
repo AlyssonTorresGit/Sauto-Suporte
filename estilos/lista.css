@@ -10,17 +10,37 @@
     color: #333;
     padding: 20px;
   }
+  .menu-navegacao {
+    background-color: #0056b3;
+    margin: 10px 0;
+    border-radius: 8px;
+  }
+  
   .menu-navegacao ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 10px;
-}
-
-.menu-navegacao li {
-  margin: 0 15px;
-}
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .menu-navegacao li {
+    margin: 0 15px;
+  }
+  
+  .menu-navegacao a {
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .menu-navegacao a:hover {
+    background-color:rgb(1, 62, 128);
+  }
   
   /* CONTAINER PRINCIPAL */
   .painel-duplo {
