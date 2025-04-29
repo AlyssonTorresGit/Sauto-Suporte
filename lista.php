@@ -63,8 +63,8 @@ header{
 }
 
 .menu-navegacao a:hover {
-  background-color:rgb(1, 62, 128); */
-/* }
+  background-color:rgb(1, 62, 128);
+}
   </style>
 </head>
 <body>    
