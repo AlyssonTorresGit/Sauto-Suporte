@@ -10,6 +10,17 @@
     color: #333;
     padding: 20px;
   }
+  .menu-navegacao ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 10px;
+}
+
+.menu-navegacao li {
+  margin: 0 15px;
+}
   
   /* CONTAINER PRINCIPAL */
   .painel-duplo {
