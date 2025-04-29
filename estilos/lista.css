@@ -10,6 +10,38 @@
     color: #333;
     padding: 20px;
   }
+
+  /* MENU DE NAVEGAÇÃO */
+  .menu-navegacao {
+    background-color: #0056b3;
+    margin: 10px 0px;
+    border-radius: 8px;
+  }
+  
+  .menu-navegacao ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  .menu-navegacao li {
+    margin: 0px 12px;
+  }
+  
+  .menu-navegacao a {
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .menu-navegacao a:hover {
+    background-color:rgb(1, 62, 128);
   
   /* CONTAINER PRINCIPAL */
   .painel-duplo {
