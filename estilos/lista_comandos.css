@@ -17,12 +17,6 @@ main{
 background-color: #3b82f6;
 min-width: 300px;
 }
-form.lista {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
   
   .campo-pesquisa {
     padding: 8px;
@@ -66,18 +60,19 @@ h1 {
 }
 
 .lista-comandos {
+    background-color: red;
     list-style: none;
     padding: 0;
     min-width: 300px;
-}
-
-.lista-comandos li {
-    margin-bottom: 15px;
+    max-width: 1200px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .lista-comandos a {
     text-decoration: none;
-    color: #2563eb;
+    color: #2ceb25;
     font-weight: bold;
     font-size: 18px;
 }
