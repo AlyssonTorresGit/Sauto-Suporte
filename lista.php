@@ -26,21 +26,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
   <title>Sauto Suporte</title>
   <link rel="stylesheet" href="estilos/lista.css">
   <style>
-    header{
-      text-align: center;
-      background-color: #0056b3;
-      border-radius: 8px;
-      padding: 5px 20px;
-      margin: 5px 0px;
-      color: white;
-    }
-    .menu-navegacao {
+header{
+  text-align: center;
+  background-color: #0056b3;
+  border-radius: 8px;
+  padding: 5px 20px;
+  margin: 5px 0px;
+  color: white;
+}
+.menu-navegacao {
   background-color: #0056b3;
   margin: 10px 0;
   border-radius: 8px;
 }
 
-/* .menu-navegacao ul {
+.menu-navegacao ul {
   list-style: none;
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
 
 .menu-navegacao li {
   margin: 0 15px;
-} */
+}
 
 .menu-navegacao a {
   background-color: #0056b3;
@@ -75,6 +75,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
         <button class="btn-consultar" type="submit">Consultar</button>
         <a class="btn-inclur" href="upload.html">Incluir</a>
     </form>
+    <nav class="menu-navegacao">
+        <ul>
+          <li><a href="listar.php">Lista</a></li>
+          <li><a href="lista_comandos.php">Comando SQLs</a></li>
+          <li><a href="importar_xml.php">Importar XMLs</a></li>
+          <li><a href="tutoriais.php">Tutoriais</a></li>
+          <li><a href="novidades.php">Novidades</a></li>
+          <li><a href="#">sugestoes</a></li>
+        </ul>
+      </nav>
 </header>
 <nav class="menu-navegacao">
         <ul>
