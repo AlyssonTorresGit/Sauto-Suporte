@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <?php include '../includes/templates/menu_navegacao.php' ?>
   <h1>Upload de XMLs de Nota Fiscal teste</h1>
+  <?php include '../includes/templates/menu_navegacao.php' ?>
 
   <form action="processa.php" method="POST" enctype="multipart/form-data" target="output">
     <input type="file" name="xmls[]" multiple required accept=".xml">
