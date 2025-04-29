@@ -26,7 +26,7 @@ $comandos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Comandos SQL</title>
+    <title>Comandos SQL</title>
     <link rel="stylesheet" href="estilos/lista_comandos.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
