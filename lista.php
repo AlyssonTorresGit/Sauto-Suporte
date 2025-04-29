@@ -86,7 +86,7 @@ header{
         </ul>
       </nav>
 </header>
-<nav class="menu-navegacao">
+<!-- <nav class="menu-navegacao">
         <ul>
           <li><a href="listar.php">Lista</a></li>
           <li><a href="lista_comandos.php">Comando SQLs</a></li>
@@ -95,7 +95,7 @@ header{
           <li><a href="novidades.php">Novidades</a></li>
           <li><a href="#">sugestoes</a></li>
         </ul>
-      </nav>
+      </nav> -->
 
 <div class="painel-duplo">
   <!-- COLUNA DE ERROS -->
