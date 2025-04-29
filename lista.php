@@ -49,7 +49,7 @@ header{
 }
 
 .menu-navegacao li {
-  margin: 0 15px;
+  margin: 0 10px;
 }
 
 .menu-navegacao a {
@@ -57,7 +57,7 @@ header{
   color: white;
   text-decoration: none;
   font-weight: bold;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 5px;
   transition: background-color 0.3s;
 }
