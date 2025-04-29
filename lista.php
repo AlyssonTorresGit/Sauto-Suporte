@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
 }
 
 .menu-navegacao a:hover {
-  background-color: #0056b3;
+  background-color:rgb(1, 62, 128);
 }
   </style>
 </head>
