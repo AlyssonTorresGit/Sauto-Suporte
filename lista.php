@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
 
 
 <?php include 'includes/templates/form_lista.php'?>
-<?php include 'includes/templates/menu_navegação.php'?>
+<?php include 'includes/templates/menu_navegacao.php'?>
 
 <div class="painel-duplo">
   <!-- COLUNA DE ERROS -->
