@@ -8,9 +8,9 @@
 </head>
     <header>
         <form class="lista" method="GET">
-            <input class="campo-pesquisa" type="text" name="pesquisa" placeholder="Pesquisar título..." value="<?= htmlspecialchars($pesquisa) ?>">
+            <input class="campo-pesquisa" type="text" name="pesquisa" placeholder="Pesquisar Comandos..." value="<?= htmlspecialchars($pesquisa) ?>">
             <button class="btn-consultar" type="submit">Consultar</button>
-            <a href="upload_comandos.php" class="btn-incluir"><i data-lucide="plus"></i>Adicionar Novo Comando</a>
+            <a href="upload_comandos.php" class="btn-incluir"><i data-lucide="plus"></i>Incluir</a>
         </form>
     </header>
 
