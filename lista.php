@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
   border-radius: 8px;
 }
 
-.menu-navegacao ul {
+/* .menu-navegacao ul {
   list-style: none;
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
 
 .menu-navegacao li {
   margin: 0 15px;
-}
+} */
 
 .menu-navegacao a {
   background-color: #0056b3;
