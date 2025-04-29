@@ -67,26 +67,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
 
   </style>
 </head>
-<body>
-<nav class="menu-navegacao">
-  <ul>
-    <li><a href="listar.php">Lista</a></li>
-    <li><a href="lista_comandos.php">Comando SQLs</a></li>
-    <li><a href="importar_xml.php">Importar XMLs</a></li>
-    <li><a href="tutoriais.php">Tutoriais</a></li>
-    <li><a href="novidades.php">Novidades</a></li>
-    <li><a href="#">sugestoes</a></li>
-
-  </ul>
-</nav>
-    
+<body>    
 <header>
     <h1 class="pesquisa">Base de Conhecimento - Sauto Suporte</h1>
     <form class="lista" method="GET">
         <input class="campo-pesquisa" type="text" name="query" placeholder="Digite sua pesquisa">
         <button class="btn-consultar" type="submit">Consultar</button>
         <a class="btn-inclur" href="upload.html">Incluir</a>
-      <nav class="menu-navegacao">
+      
+    </form>
+</header>
+<nav class="menu-navegacao">
         <ul>
           <li><a href="listar.php">Lista</a></li>
           <li><a href="lista_comandos.php">Comando SQLs</a></li>
@@ -96,8 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
           <li><a href="#">sugestoes</a></li>
         </ul>
       </nav>
-    </form>
-</header>
 
 <div class="painel-duplo">
   <!-- COLUNA DE ERROS -->
