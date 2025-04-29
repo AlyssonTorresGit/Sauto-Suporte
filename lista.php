@@ -45,7 +45,7 @@ header{
   display: flex;
   justify-content: center;
   margin: 0;
-  padding: 10px;
+  padding: 0px;
 }
 
 .menu-navegacao li {
@@ -86,16 +86,6 @@ header{
         </ul>
       </nav>
 </header>
-<!-- <nav class="menu-navegacao">
-        <ul>
-          <li><a href="listar.php">Lista</a></li>
-          <li><a href="lista_comandos.php">Comando SQLs</a></li>
-          <li><a href="importar_xml.php">Importar XMLs</a></li>
-          <li><a href="tutoriais.php">Tutoriais</a></li>
-          <li><a href="novidades.php">Novidades</a></li>
-          <li><a href="#">sugestoes</a></li>
-        </ul>
-      </nav> -->
 
 <div class="painel-duplo">
   <!-- COLUNA DE ERROS -->
