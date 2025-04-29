@@ -6,7 +6,6 @@
     <title>Comandos sqls</title>
     <link rel="stylesheet" href="includes/templates/header.css">
 </head>
-
     <header>
         <form class="lista" method="GET">
             <input class="campo-pesquisa" type="text" name="pesquisa" placeholder="Pesquisar título..." value="<?= htmlspecialchars($pesquisa) ?>">
