@@ -39,21 +39,9 @@ $comandos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <header>
         <h1 class="pesquisa">Comandos SQL</h1>
         <?php include 'includes/templates/form_lista_comandos.php'?>
-        <!-- <form class="lista" method="GET">
-            <input class="campo-pesquisa" type="text" name="pesquisa" placeholder="Pesquisar título..." value="<?= htmlspecialchars($pesquisa) ?>">
-            <button class="btn-consultar" type="submit">Consultar</button>
-            <a href="upload_comandos.php" class="btn-incluir"><i data-lucide="plus"></i>Adicionar Novo Comando</a>
-        </form> -->
-        <nav class="menu-navegacao">
-            <ul>
-            <li><a href="listar.php">Lista</a></li>
-            <li><a href="lista_comandos.php">Comando SQLs</a></li>
-            <li><a href="importar_xml.php">Importar XMLs</a></li>
-            <li><a href="tutoriais.php">Tutoriais</a></li>
-            <li><a href="novidades.php">Novidades</a></li>
-            <li><a href="#">sugestoes</a></li>
-            </ul>
-        </nav>
+        
+        <?php include 'includes/templates/menu_navegacao.php'?>
+    
     </header>
     <main>
         <div class="lista-comandos">
