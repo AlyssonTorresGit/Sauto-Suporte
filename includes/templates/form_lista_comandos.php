@@ -6,7 +6,7 @@
     <title>Comandos sqls</title>
     <link rel="stylesheet" href="includes/templates/header.css">
 </head>
-<body>
+
     <header>
         <form class="lista" method="GET">
             <input class="campo-pesquisa" type="text" name="pesquisa" placeholder="Pesquisar título..." value="<?= htmlspecialchars($pesquisa) ?>">
@@ -14,5 +14,5 @@
             <a href="upload_comandos.php" class="btn-incluir"><i data-lucide="plus"></i>Adicionar Novo Comando</a>
         </form>
     </header>
-</body>
+
 </html>
