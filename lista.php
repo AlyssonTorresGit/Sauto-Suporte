@@ -25,7 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sauto Suporte</title>
   <link rel="stylesheet" href="estilos/lista.css">
-  <style>
+  <link rel="stylesheet" href="header.css">
+  <!-- <style>
 header{
   text-align: center;
   background-color: #0056b3;
@@ -85,7 +86,9 @@ header{
           <li><a href="#">sugestoes</a></li>
         </ul>
       </nav>
-</header>
+</header> -->
+
+<?php include 'header.php'; ?>
 
 <div class="painel-duplo">
   <!-- COLUNA DE ERROS -->
