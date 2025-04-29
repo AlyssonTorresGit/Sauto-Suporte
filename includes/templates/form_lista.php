@@ -7,14 +7,13 @@
     <link rel="stylesheet" href="includes/templates/header.css">
 
 </head>
-<body>
+
 <header>
     <h1 class="pesquisa">Base de Conhecimento - Sauto Suporte</h1>
         <form class="lista" method="GET">
-            <input class="campo-pesquisa" type="text" name="query" placeholder="Pesquisar Título">
-            <button class="btn-consultar" type="submit">Consultar</button>
-            <a href="upload.html" class="btn-inclur">Incluir</a>
-        </form>
-    </header>
-</body>
+        <input class="campo-pesquisa" type="text" name="query" placeholder="Pesquisar Título">
+        <button class="btn-consultar" type="submit">Consultar</button>
+        <a href="upload.html" class="btn-inclur">Incluir</a>
+    </form>
+</header>
 </html>

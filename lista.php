@@ -26,8 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['enviarSugestao'])) {
   <title>Sauto Suporte</title>
   <link rel="stylesheet" href="estilos/lista.css">
   <link rel="stylesheet" href="header.css">
-
-
+<head>
+<body>
+    
 <?php include 'includes/templates/form_lista.php'?>
 <?php include 'includes/templates/menu_navegacao.php'?>
 
