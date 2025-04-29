@@ -44,12 +44,12 @@ header{
   list-style: none;
   display: flex;
   justify-content: center;
-  margin: 0;
+  margin: 0px;
   padding: 0px;
 }
 
 .menu-navegacao li {
-  margin: 0 10px;
+  margin: 0px 12px;
 }
 
 .menu-navegacao a {
