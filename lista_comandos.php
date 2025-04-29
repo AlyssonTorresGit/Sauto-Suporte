@@ -38,10 +38,8 @@ $comandos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <header>
         <h1 class="pesquisa">Comandos SQL</h1>
-        <?php include 'includes/templates/form_lista_comandos.php'?>
-        
-        <?php include 'includes/templates/menu_navegacao.php'?>
-    
+        <?php include 'includes/templates/form_lista_comandos.php'?> 
+        <?php include 'includes/templates/menu_navegacao.php'?> 
     </header>
     <main>
         <div class="lista-comandos">
